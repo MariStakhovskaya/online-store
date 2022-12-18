@@ -4,7 +4,7 @@
 }
 @font-face {
   font-family: Montserrat;
-  src: url(../fonts/Montserrat-Regular.ttf);
+  src: url(../../fonts/Montserrat-Regular.ttf);
 }
 .container {
   width: 80vw;
@@ -28,7 +28,7 @@
   width: calc(50% - 50px);
   height: 40px;
   border: 1px #d3d3d3 solid;
-  background-image: url(../images/glass.png);
+  background-image: url(../../images/glass.png);
   background-size: 36px 36px;
   background-repeat: no-repeat;
   background-position-x: 7px;

@@ -4,15 +4,15 @@
 }
 @font-face {
   font-family: Nexa;
-  src: url(../fonts/nexa-script-thin.ttf);
+  src: url(../../fonts/nexa-script-thin.ttf);
 }
 @font-face {
   font-family: Montserrat;
-  src: url(../fonts/Montserrat-Regular.ttf);
+  src: url(../../fonts/Montserrat-Regular.ttf);
 }
 .background {
   background-color: #fefab1;
-  background-image: url(../images/background.jpg);
+  background-image: url(../../images/background.jpg);
   background-position: bottom;
   background-repeat: no-repeat;
 }

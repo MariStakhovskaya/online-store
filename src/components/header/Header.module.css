@@ -4,11 +4,11 @@
 }
 @font-face {
   font-family: Nexa;
-  src: url(../fonts/nexa-script-thin.ttf);
+  src: url(../../fonts/nexa-script-thin.ttf);
 }
 @font-face {
   font-family: Montserrat;
-  src: url(../fonts/Montserrat-Regular.ttf);
+  src: url(../../fonts/Montserrat-Regular.ttf);
 }
 .container {
   width: 80vw;
