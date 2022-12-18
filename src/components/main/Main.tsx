@@ -1,4 +1,5 @@
 import styles from './Main.module.css';
+import Product from '../product/Product';
 
 function Main() {
   return (
@@ -114,10 +115,6 @@ function Brand() {
       </label>
     </div>
   );
-}
-
-function Product() {
-  return <div className={styles.product}></div>;
 }
 
 export default Main;

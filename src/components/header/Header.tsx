@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Header.module.css';
-import logo from '../images/logo-duckyduck.png';
-import basket from '../images/shopping-basket.png';
+import logo from '../../images/logo-duckyduck.png';
+import basket from '../../images/shopping-basket.png';
 
 function Header() {
   return (
