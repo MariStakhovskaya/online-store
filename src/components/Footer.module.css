@@ -1,0 +1,29 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+@font-face {
+  font-family: Nexa;
+  src: url(../fonts/nexa-script-thin.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../fonts/Montserrat-Regular.ttf);
+}
+.container {
+  width: 80vw;
+  font-family: Montserrat;
+}
+.footer {
+  padding: 10px 0;
+}
+.footer p {
+  margin: 0;
+}
+.logo {
+  font-family: Nexa;
+  font-size: 32px;
+}
+.logo span {
+  color: #f2651c;
+}
