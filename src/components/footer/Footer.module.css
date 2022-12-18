@@ -10,6 +10,12 @@
   font-family: Montserrat;
   src: url(../fonts/Montserrat-Regular.ttf);
 }
+.background {
+  background-color: #fefab1;
+  background-image: url(../images/background.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
 .container {
   width: 80vw;
   font-family: Montserrat;
@@ -17,7 +23,6 @@
 .footer {
   padding: 10px 0;
   width: 200px;
-  background: white;
 }
 .footer p {
   margin: 0;
