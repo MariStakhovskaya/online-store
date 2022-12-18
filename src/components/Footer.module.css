@@ -16,6 +16,8 @@
 }
 .footer {
   padding: 10px 0;
+  width: 200px;
+  background: white;
 }
 .footer p {
   margin: 0;

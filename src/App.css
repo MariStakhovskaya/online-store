@@ -1,6 +1,10 @@
 .App {
   text-align: center;
-  background: #fefab1;
+  background-color: #fefab1;
+  background-image: url(./images/background.jpg);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 100vw;
 }
 
 .App-logo {
