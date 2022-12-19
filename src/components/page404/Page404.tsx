@@ -1,7 +1,7 @@
 import style from '../page404/Page404.module.css';
 import image404 from '../../assets/img/page404.png';
 import { Button } from '../custom/button/Button';
-import { Navigate, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Page404() {
   return (

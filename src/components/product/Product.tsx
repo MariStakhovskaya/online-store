@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { Button } from '../custom/button/Button';
 import style from './Product.module.css';
+import { ProductType } from '../../App';
+import { Link } from 'react-router-dom';
 
-function Product() {
+export type ProductDuckType = {
+  duck: ProductType;
+};
+
+function Product(props: ProductDuckType) {
   const [addCart, setAddCart] = useState(false);
 
   const addToCart = () => {
@@ -13,26 +19,28 @@ function Product() {
   };
   return (
     <div className={style.wrapperProduct}>
-      <div>
-        <img
-          className={style.imgProduct}
-          src="https://i.ibb.co/8m9STkd/fire1.jpg"
-          alt="aaa"
-        />
-      </div>
-      <div>"Пожарник"</div>
-      <div className={style.descriptinBlock}>
-        <div className={style.description}>Уточка для дедлайнов</div>
-        <div>In stock: 25</div>
-        <div>Rating: 6</div>
-      </div>
+      <Link key={props.duck.id} to={`details/${props.duck.id}`}>
+        <div>
+          <img
+            className={style.imgProduct}
+            src={props.duck.image}
+            alt={props.duck.alt}
+          />
+        </div>
+        <div>{props.duck.name}</div>
+        <div className={style.descriptinBlock}>
+          <div className={style.description}>{props.duck.description}</div>
+          <div>На складе: {props.duck.stock}</div>
+          <div>Рейтинг: {props.duck.raiting}</div>
+        </div>
+      </Link>
       <div className={style.buttonBlock}>
-        <div className={style.price}>125 $</div>
+        <div className={style.price}>{props.duck.price} $</div>
         <div>
           {addCart ? (
-            <Button name={'Drop from cart'} callback={dropFromCart} />
+            <Button name={'В корзине'} callback={dropFromCart} />
           ) : (
-            <Button name={'Add to cart'} callback={addToCart} />
+            <Button name={'Купить'} callback={addToCart} />
           )}
         </div>
       </div>
