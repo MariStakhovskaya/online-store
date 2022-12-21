@@ -11,11 +11,15 @@ function Main() {
           <option> Сортировка 2 </option>
           <option> Сортировка 3 </option>
         </select>
+        <div className={styles.grid}>
+          <div>1</div>
+          <div>2</div>
+        </div>
       </div>
       <div className={styles.products__and__filters}>
         <div className={styles.filters}>
           <div className={styles.category}>
-            <p> По категории </p>
+            <p> Категория </p>
             <div className={styles.check}>
               <Category />
               <Category />
@@ -23,14 +27,14 @@ function Main() {
             </div>
           </div>
           <div className={styles.brand}>
-            <p> По гендеру </p>
+            <p> Пол </p>
             <div className={styles.check}>
-              <Brand />
-              <Brand />
+              <Gender />
+              <Gender />
             </div>
           </div>
           <div className={styles.price}>
-            <p> По цене </p>
+            <p> Цена </p>
             <div className={styles.double__range}>
               <div className={styles.values}>
                 <div className={styles.price__min}> 0 </div>
@@ -54,7 +58,7 @@ function Main() {
             </div>
           </div>
           <div className={styles.ctock}>
-            <p> По наличию </p>
+            <p> Наличие </p>
             <div className={styles.double__range}>
               <div className={styles.values}>
                 <div className={styles.price__min}> 0 </div>
@@ -106,12 +110,12 @@ function Category() {
   );
 }
 
-function Brand() {
+function Gender() {
   return (
     <div>
       <label>
         <input type="checkbox" />
-        <p> Гендер </p>
+        <p> Пол </p>
       </label>
     </div>
   );
