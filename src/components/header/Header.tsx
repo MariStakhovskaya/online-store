@@ -18,7 +18,7 @@ function Header() {
             <img src={basket} alt="Корзина товаров" />
             <p className={styles.quantity}> 0 </p>
           </div>
-          <p className={styles.counter}> 0,00 р </p>
+          <p className={styles.counter}> 0,00 $ </p>
         </div>
       </div>
     </div>
