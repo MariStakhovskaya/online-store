@@ -4,7 +4,7 @@ import { ProductType } from '../../App';
 
 export type MainPropsType = {
   ducks: ProductType[];
-  setDucks: () => void;
+  setDucks: (ducks: ProductType[]) => void;
 };
 
 function Main({ ducks, setDucks }: MainPropsType) {
