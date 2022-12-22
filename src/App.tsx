@@ -27,8 +27,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Main ducks={ducks} />} />
-          <Route path="details/:id" element={<DetailsProduct />} />
+          <Route index element={<Main ducks={ducks} setDucks={setDucks} />} />
+          <Route
+            path="details/:id"
+            element={<DetailsProduct ducks={ducks} />}
+          />
           <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>

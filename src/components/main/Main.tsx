@@ -4,9 +4,10 @@ import { ProductType } from '../../App';
 
 export type MainPropsType = {
   ducks: ProductType[];
+  setDucks: () => void;
 };
 
-function Main(props: MainPropsType) {
+function Main({ ducks, setDucks }: MainPropsType) {
   return (
     <div className={styles.container}>
       <div className={styles.search__and__sort}>
@@ -84,7 +85,7 @@ function Main(props: MainPropsType) {
           </div>
         </div>
         <div className={styles.products}>
-          {props.ducks.map((duck) => {
+          {ducks.map((duck) => {
             return <Product key={duck.id} duck={duck} />;
           })}
         </div>

@@ -8,7 +8,7 @@ export type ProductDuckType = {
   duck: ProductType;
 };
 
-function Product(props: ProductDuckType) {
+function Product({ duck }: ProductDuckType) {
   const [addCart, setAddCart] = useState(false);
 
   const addToCart = () => {
@@ -19,23 +19,19 @@ function Product(props: ProductDuckType) {
   };
   return (
     <div className={style.wrapperProduct}>
-      <Link key={props.duck.id} to={`details/${props.duck.id}`}>
+      <Link key={duck.id} to={`details/${duck.id}`}>
         <div>
-          <img
-            className={style.imgProduct}
-            src={props.duck.image}
-            alt={props.duck.alt}
-          />
+          <img className={style.imgProduct} src={duck.image} alt={duck.alt} />
         </div>
-        <div>{props.duck.name}</div>
+        <div>{duck.name}</div>
         <div className={style.descriptinBlock}>
-          <div className={style.description}>{props.duck.description}</div>
-          <div>На складе: {props.duck.stock}</div>
-          <div>Рейтинг: {props.duck.raiting}</div>
+          <div className={style.description}>{duck.description}</div>
+          <div>На складе: {duck.stock}</div>
+          <div>Рейтинг: {duck.raiting}</div>
         </div>
       </Link>
       <div className={style.buttonBlock}>
-        <div className={style.price}>{props.duck.price} $</div>
+        <div className={style.price}>{duck.price} $</div>
         <div>
           {addCart ? (
             <Button name={'В корзине'} callback={dropFromCart} />
