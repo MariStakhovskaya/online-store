@@ -12,8 +12,10 @@
 }
 .search__and__sort {
   display: flex;
-  justify-content: end;
-  gap: 50px;
+  justify-content: space-between;
+  align-items: center;
+  width: 78%;
+  margin-right: 0;
 }
 .search__and__sort select {
   margin: 0;
@@ -21,19 +23,33 @@
   width: 15%;
   padding: 10px 5px;
   border: 1px #d3d3d3 solid;
+  border-radius: 10px;
   color: #808080;
 }
 .search {
   margin: 0;
-  width: calc(50% - 50px);
+  width: 50%;
   height: 40px;
   border: 1px #d3d3d3 solid;
+  border-radius: 10px;
   background-image: url(../../images/glass.png);
   background-size: 36px 36px;
   background-repeat: no-repeat;
   background-position-x: 7px;
   background-position-y: 2px;
   padding-left: 50px;
+}
+.grid {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+.grid div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+  height: 42px;
 }
 .category,
 .brand,
@@ -42,6 +58,7 @@
   width: 100%;
   margin-bottom: 15px;
   border: 1px #d3d3d3 solid;
+  border-radius: 10px;
 }
 .double__range {
   position: relative;
@@ -107,6 +124,8 @@ input[type=range]::-moz-range-thumb {
   text-align: left;
   background: #ffffff;
   border-bottom: 1px #d3d3d3 solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   padding: 5px;
   padding-left: 15px;
 }
