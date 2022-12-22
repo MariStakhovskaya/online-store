@@ -1,0 +1,11 @@
+.wrapperProductDetails {
+    width: 60%;
+    height: auto;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.detailsBlock {
+    display: flex;
+    flex-direction: column;
+}

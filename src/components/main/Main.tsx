@@ -1,7 +1,13 @@
 import styles from './Main.module.css';
 import Product from '../product/Product';
+import { ProductType } from '../../App';
 
-function Main() {
+export type MainPropsType = {
+  ducks: ProductType[];
+  setDucks: (ducks: ProductType[]) => void;
+};
+
+function Main({ ducks, setDucks }: MainPropsType) {
   return (
     <div className={styles.container}>
       <div className={styles.search__and__sort}>
@@ -83,16 +89,9 @@ function Main() {
           </div>
         </div>
         <div className={styles.products}>
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {ducks.map((duck) => {
+            return <Product key={duck.id} duck={duck} />;
+          })}
         </div>
       </div>
     </div>

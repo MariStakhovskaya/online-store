@@ -1,13 +1,15 @@
 import Basket from './basket/Basket';
 import Footer from './footer/Footer';
 import Header from './header/Header';
-import Main from './main/Main';
+import { Outlet } from 'react-router-dom';
 
 function Layout() {
   return (
     <div>
       <Header />
-      <Basket />
+
+      <Outlet />
+
       <Footer />
     </div>
   );
