@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
 import logo from '../../images/logo-duckyduck.png';
 import basket from '../../images/shopping-basket.png';
 
@@ -15,7 +16,9 @@ function Header() {
         </div>
         <div className={styles.basket}>
           <div>
-            <img src={basket} alt="Корзина товаров" />
+            <Link to="basket">
+              <img src={basket} alt="Корзина товаров" />
+            </Link>
             <p className={styles.quantity}> 0 </p>
           </div>
           <p className={styles.counter}> 0,00 $ </p>

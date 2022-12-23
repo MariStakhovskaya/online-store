@@ -7,11 +7,11 @@ function Page404() {
   return (
     <div className={style.wrapper}>
       <div className={style.image}>
-        <div className={style.errorText}>Oops, This page does not exist</div>
+        <div className={style.errorText}>Кря, такой страницы нет</div>
         <img className={style.img} src={image404} alt="page 404" />
       </div>
       <NavLink to={'/'}>
-        <Button name={'go to homepage'}></Button>
+        <Button name={'назад к уточкам'}></Button>
       </NavLink>
     </div>
   );

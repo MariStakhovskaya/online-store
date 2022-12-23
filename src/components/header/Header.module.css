@@ -49,6 +49,7 @@
 }
 .quantity {
   position: absolute;
+  top: 10px;
   background: #00000080;
   color: #ffffff;
   padding: 0 5px;

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout';
 import Main from './components/main/Main';
+import Basket from './components/basket/Basket';
 import Page404 from './components/page404/Page404';
 import DetailsProduct from './components/product/detailsProduct/DetailsProduct';
 import productDucks from './data/products.json';
@@ -28,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Main ducks={ducks} setDucks={setDucks} />} />
+          <Route path="basket" element={<Basket />} />
           <Route
             path="details/:id"
             element={<DetailsProduct ducks={ducks} />}

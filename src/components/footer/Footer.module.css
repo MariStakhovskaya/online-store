@@ -17,6 +17,7 @@
   align-items: center;
   justify-content: center;
   gap: 40px;
+  margin-top: 70px;
 }
 .container > div {
   margin: 0;
