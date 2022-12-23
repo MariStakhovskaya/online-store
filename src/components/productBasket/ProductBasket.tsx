@@ -1,7 +1,7 @@
 import { Button } from '../custom/button/Button';
 import styles from './ProductBasket.module.css';
 
-function Product() {
+function ProductBasket() {
   return (
     <div className={styles.wrapperProduct}>
       <div>
@@ -32,4 +32,4 @@ function Product() {
   );
 }
 
-export default Product;
+export default ProductBasket;
