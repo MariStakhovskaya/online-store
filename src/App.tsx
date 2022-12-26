@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Layout from './components/Layout';
@@ -6,7 +6,6 @@ import Main from './components/main/Main';
 import Basket from './components/basket/Basket';
 import Page404 from './components/page404/Page404';
 import DetailsProduct from './components/product/detailsProduct/DetailsProduct';
-import productDucks from './data/products.json';
 
 export type ProductType = {
   id: number;
@@ -23,7 +22,16 @@ export type ProductType = {
 };
 
 function App() {
-  const [ducks, setDucks] = React.useState<ProductType[]>(productDucks);
+  const [ducks, setDucks] = React.useState<ProductType[]>([]);
+
+  useEffect(() => {
+    fetch('https://631e4b429f946df7dc40b245.mockapi.io/ducks')
+      .then((res) => res.json())
+      .then((json) => {
+        setDucks(json);
+      });
+  }, []);
+
   return (
     <div className="App">
       <Routes>
