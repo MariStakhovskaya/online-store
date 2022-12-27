@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import filterReducer from './slices/filterSlice';
+import ducksReducer from './slices/ducksSlice';
 
 export const store = configureStore({
   reducer: {
     filter: filterReducer,
+    ducks: ducksReducer,
   },
 });
 console.log(store);

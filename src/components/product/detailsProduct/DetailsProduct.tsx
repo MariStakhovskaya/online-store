@@ -1,15 +1,13 @@
 import { useParams } from 'react-router-dom';
 import style from './DetailsProduct.module.css';
-import { ProductType } from '../../../App';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../../redux/store';
 
-type DetailsProductType = {
-  ducks: ProductType[];
-};
-
-function DetailsProduct(props: DetailsProductType) {
+function DetailsProduct() {
+  const ducksData = useSelector((state: RootState) => state.ducks.ducks);
   const { id } = useParams<{ id: string }>();
-  const duckDetail = props.ducks.find((item) => (id ? item.id === +id : ''));
+  const duckDetail = ducksData.find((item) => (id ? item.id === +id : ''));
   const [image, setImage] = useState<string | undefined>(duckDetail?.image);
 
   const onClickImg = (src: string) => {
