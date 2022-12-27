@@ -1,6 +1,10 @@
 import styles from './Main.module.css';
 import Product from '../product/Product';
 import { ProductType } from '../../App';
+import Categories from '../category/Categories';
+import Gender from '../gender/Gender';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../redux/store';
 
 export type MainPropsType = {
   ducks: ProductType[];
@@ -8,6 +12,24 @@ export type MainPropsType = {
 };
 
 function Main({ ducks, setDucks }: MainPropsType) {
+  const genderType = useSelector((state: RootState) => state.filter.genderType);
+  // const dispatch = useDispatch();
+  let filteredGender = ducks;
+  if (genderType.length === 2) {
+    filteredGender = ducks;
+  } else {
+    if (genderType[0] === 'мальчик') {
+      filteredGender = ducks.filter(
+        (duckGender) => duckGender.gender === 'мальчик'
+      );
+    }
+    if (genderType[0] === 'девочка') {
+      filteredGender = ducks.filter(
+        (duckGender) => duckGender.gender === 'девочка'
+      );
+    }
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.search__and__sort}>
@@ -26,18 +48,11 @@ function Main({ ducks, setDucks }: MainPropsType) {
         <div className={styles.filters}>
           <div className={styles.category}>
             <p> Категория </p>
-            <div className={styles.check}>
-              <Category />
-              <Category />
-              <Category />
-            </div>
+            <Categories />
           </div>
           <div className={styles.brand}>
             <p> Пол </p>
-            <div className={styles.check}>
-              <Gender />
-              <Gender />
-            </div>
+            <Gender />
           </div>
           <div className={styles.price}>
             <p> Цена </p>
@@ -89,33 +104,11 @@ function Main({ ducks, setDucks }: MainPropsType) {
           </div>
         </div>
         <div className={styles.products}>
-          {ducks.map((duck) => {
+          {filteredGender.map((duck) => {
             return <Product key={duck.id} duck={duck} />;
           })}
         </div>
       </div>
-    </div>
-  );
-}
-
-function Category() {
-  return (
-    <div>
-      <label>
-        <input type="checkbox" />
-        <p> Категория </p>
-      </label>
-    </div>
-  );
-}
-
-function Gender() {
-  return (
-    <div>
-      <label>
-        <input type="checkbox" />
-        <p> Пол </p>
-      </label>
     </div>
   );
 }

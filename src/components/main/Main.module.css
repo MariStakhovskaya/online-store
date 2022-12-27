@@ -134,25 +134,7 @@ input[type=range]::-moz-range-thumb {
   padding: 5px;
   padding-left: 15px;
 }
-.check {
-  width: calc(100% - 18px);
-  padding: 5px;
-  padding-left: 15px;
-  display: flex;
-  flex-direction: column;
-  margin-left: 0;
-}
-.check div {
-  margin-left: 0;
-}
-.check label {
-  display: flex;
-  margin-bottom: 5px;
-  margin-left: 0;
-}
-.check label input {
-  margin-right: 5px;
-}
+
 .products {
   width: 78%;
   display: flex;

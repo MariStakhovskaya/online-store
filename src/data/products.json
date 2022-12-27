@@ -29,7 +29,7 @@
         "id": 3,
         "name": "Дарт Вейдер",
         "description": "Только для студент1 в rsschool",
-        "category": "students1 rss",
+        "category": "student1 rss",
         "gender": "male",
         "price": 350,
         "stock": 1000,
