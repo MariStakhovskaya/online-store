@@ -1,30 +1,25 @@
 import styles from './Main.module.css';
 import Product from '../product/Product';
-import { ProductType } from '../../App';
 import Categories from '../category/Categories';
 import Gender from '../gender/Gender';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../redux/store';
 
-export type MainPropsType = {
-  ducks: ProductType[];
-  setDucks: (ducks: ProductType[]) => void;
-};
-
-function Main({ ducks, setDucks }: MainPropsType) {
+function Main() {
+  const ducksData = useSelector((state: RootState) => state.ducks.ducks);
   const genderType = useSelector((state: RootState) => state.filter.genderType);
   // const dispatch = useDispatch();
-  let filteredGender = ducks;
+  let filteredGender = ducksData;
   if (genderType.length === 2) {
-    filteredGender = ducks;
+    filteredGender = ducksData;
   } else {
     if (genderType[0] === 'мальчик') {
-      filteredGender = ducks.filter(
+      filteredGender = ducksData.filter(
         (duckGender) => duckGender.gender === 'мальчик'
       );
     }
     if (genderType[0] === 'девочка') {
-      filteredGender = ducks.filter(
+      filteredGender = ducksData.filter(
         (duckGender) => duckGender.gender === 'девочка'
       );
     }
