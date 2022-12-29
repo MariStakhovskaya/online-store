@@ -25,25 +25,13 @@ a {
 .search__and__sort select {
   margin: 0;
   font-size: 16px;
-  width: 15%;
+  width: 20%;
   padding: 10px 5px;
   border: 1px #d3d3d3 solid;
   border-radius: 10px;
   color: #808080;
 }
-.search {
-  margin: 0;
-  width: 50%;
-  height: 40px;
-  border: 1px #d3d3d3 solid;
-  border-radius: 10px;
-  background-image: url(../../images/glass.png);
-  background-size: 36px 36px;
-  background-repeat: no-repeat;
-  background-position-x: 7px;
-  background-position-y: 2px;
-  padding-left: 50px;
-}
+
 .grid {
   display: flex;
   gap: 30px;

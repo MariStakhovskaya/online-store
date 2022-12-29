@@ -2,38 +2,19 @@ import styles from './Main.module.css';
 import Product from '../product/Product';
 import Categories from '../category/Categories';
 import Gender from '../gender/Gender';
+import Search from '../search/Search';
+import Sort from '../sort/Sort';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../../redux/store';
+import { selectDucksFiltered } from '../../redux/selectors';
 
 function Main() {
-  const ducksData = useSelector((state: RootState) => state.ducks.ducks);
-  const genderType = useSelector((state: RootState) => state.filter.genderType);
-  // const dispatch = useDispatch();
-  let filteredGender = ducksData;
-  if (genderType.length === 2) {
-    filteredGender = ducksData;
-  } else {
-    if (genderType[0] === 'мальчик') {
-      filteredGender = ducksData.filter(
-        (duckGender) => duckGender.gender === 'мальчик'
-      );
-    }
-    if (genderType[0] === 'девочка') {
-      filteredGender = ducksData.filter(
-        (duckGender) => duckGender.gender === 'девочка'
-      );
-    }
-  }
+  const ducksData = useSelector(selectDucksFiltered);
 
   return (
     <div className={styles.container}>
       <div className={styles.search__and__sort}>
-        <input className={styles.search} placeholder="Поиск" />
-        <select name="sort">
-          <option> Сортировка 1 </option>
-          <option> Сортировка 2 </option>
-          <option> Сортировка 3 </option>
-        </select>
+        <Search />
+        <Sort />
         <div className={styles.grid}>
           <div>1</div>
           <div>2</div>
@@ -99,9 +80,10 @@ function Main() {
           </div>
         </div>
         <div className={styles.products}>
-          {filteredGender.map((duck) => {
-            return <Product key={duck.id} duck={duck} />;
-          })}
+          {ducksData &&
+            ducksData.map((duck) => {
+              return <Product key={duck.id} duck={duck} />;
+            })}
         </div>
       </div>
     </div>

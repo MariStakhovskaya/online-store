@@ -2,12 +2,12 @@ import styles from '../gender/Gender.module.css';
 import { ChangeEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeGender } from '../../redux/slices/filterSlice';
-import type { RootState } from '../../redux/store';
+import { selectGender } from '../../redux/selectors';
 
 export function Gender() {
   const dispatch = useDispatch();
 
-  const genderR = useSelector((state: RootState) => state.filter.genderType);
+  const genderR = useSelector(selectGender);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = e.target;
