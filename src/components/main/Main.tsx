@@ -6,9 +6,12 @@ import Search from '../search/Search';
 import Sort from '../sort/Sort';
 import { useSelector } from 'react-redux';
 import { selectDucksFiltered } from '../../redux/selectors';
+import { useState } from 'react';
+import View from '../view/View';
 
 function Main() {
   const ducksData = useSelector(selectDucksFiltered);
+  const [isGrid, setIsGrid] = useState<boolean>(true);
 
   return (
     <div className={styles.container}>
@@ -16,8 +19,7 @@ function Main() {
         <Search />
         <Sort />
         <div className={styles.grid}>
-          <div>1</div>
-          <div>2</div>
+          <View isGrid={isGrid} setIsGrid={setIsGrid} />
         </div>
       </div>
       <div className={styles.products__and__filters}>
@@ -79,10 +81,10 @@ function Main() {
             </div>
           </div>
         </div>
-        <div className={styles.products}>
+        <div className={isGrid ? styles.products : styles.listView}>
           {ducksData &&
             ducksData.map((duck) => {
-              return <Product key={duck.id} duck={duck} />;
+              return <Product key={duck.id} duck={duck} isGrid={isGrid} />;
             })}
         </div>
       </div>

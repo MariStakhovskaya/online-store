@@ -101,7 +101,6 @@ input[type=range]::-moz-range-thumb {
 }
 .products__and__filters {
   display: flex;
-  justify-content: space-between;
   padding: 10px 0 0 0;
 }
 .products__and__filters > div {
@@ -129,7 +128,18 @@ input[type=range]::-moz-range-thumb {
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 30px;
+  padding-left: 15px;
 }
+
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 5px;
+  justify-content: flex-start;
+  
+}
+
 .product {
   margin: 0;
   background: #ffffff;
