@@ -3,19 +3,24 @@ import { Button } from '../custom/button/Button';
 import style from './Product.module.css';
 import { ProductType } from '../../App';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addDuck, removeDuck } from '../../redux/slices/basketSlice';
 
 export type ProductDuckType = {
   duck: ProductType;
 };
 
 function Product({ duck }: ProductDuckType) {
+  const dispatch = useDispatch();
   const [addCart, setAddCart] = useState(false);
 
   const addToCart = () => {
     setAddCart(true);
+    dispatch(addDuck(duck));
   };
   const dropFromCart = () => {
     setAddCart(false);
+    dispatch(removeDuck(duck));
   };
   return (
     <div className={style.wrapperProduct}>
