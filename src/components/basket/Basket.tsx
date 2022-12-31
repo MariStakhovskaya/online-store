@@ -1,16 +1,21 @@
 import { Button } from '../custom/button/Button';
 import ProductBasket from '../productBasket/ProductBasket';
 import styles from './Basket.module.css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { ProductType } from '../../App';
 
 function Basket() {
+  const { ducks, totalPrice } = useSelector((state: RootState) => state.basket);
+
   return (
     <div className={styles.container}>
       <div className={styles.items}>
         <div className={styles.total}>
           <p className={styles.name}> Ваши товары: </p>
-          <span> 3 </span>
+          <span> {ducks.length} </span>
           <p>
-            (<span>375 $</span>)
+            (<span>{totalPrice} $</span>)
           </p>
         </div>
         <div className={styles.quantity__items}>
@@ -19,18 +24,10 @@ function Basket() {
         </div>
       </div>
       <div className={styles.products}>
-        <div className={styles.product}>
-          <div className={styles.count}> 1 </div>
-          <ProductBasket />
-        </div>
-        <div className={styles.product}>
-          <div className={styles.count}> 2 </div>
-          <ProductBasket />
-        </div>
-        <div className={styles.product}>
-          <div className={styles.count}> 3 </div>
-          <ProductBasket />
-        </div>
+        {ducks &&
+          ducks.map((duck) => {
+            return <ProductBasket key={duck.id} duck={duck} />;
+          })}
       </div>
       <div className={styles.btns}>
         <div>

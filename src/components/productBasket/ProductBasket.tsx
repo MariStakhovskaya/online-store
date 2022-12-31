@@ -1,23 +1,24 @@
 import { Button } from '../custom/button/Button';
 import styles from './ProductBasket.module.css';
+import { ProductType } from '../../App';
 
-function ProductBasket() {
+export type ProductDuckType = {
+  duck: ProductType;
+};
+
+function ProductBasket({ duck }: ProductDuckType) {
   return (
     <div className={styles.wrapperProduct}>
       <div>
-        <img
-          className={styles.imgProduct}
-          src="https://i.ibb.co/8m9STkd/fire1.jpg"
-          alt="aaa"
-        />
+        <img className={styles.imgProduct} src={duck.image} alt={duck.alt} />
       </div>
       <div className={styles.description}>
-        <div className={styles.name}> "Пожарник" </div>
+        <div className={styles.name}> {duck.name} </div>
         <div className={styles.line}></div>
         <div className={styles.descriptinBlock}>
-          <div className={styles.desc}> Уточка для дедлайнов </div>
-          <div> В наличии: 25 </div>
-          <div> Рейтинг: 6 </div>
+          <div className={styles.desc}> {duck.description} </div>
+          <div> В наличии: {duck.stock} </div>
+          <div> Рейтинг: {duck.raiting} </div>
         </div>
       </div>
       <div>
