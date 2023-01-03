@@ -11,9 +11,7 @@ export type ProductDuckType = {
   isGrid: boolean;
 };
 
-
 function Product({ duck, isGrid }: ProductDuckType) {
-
   const dispatch = useDispatch();
 
   const [addCart, setAddCart] = useState(false);
@@ -30,14 +28,17 @@ function Product({ duck, isGrid }: ProductDuckType) {
     <div className={isGrid ? style.wrapperProduct : style.wrapperListproduct}>
       <Link key={duck.id} to={`details/${duck.id}`}>
         <div className={isGrid ? '' : style.listView}>
-          <div>
+          <div className={isGrid ? '' : style.imgBlock}>
             <img className={style.imgProduct} src={duck.image} alt={duck.alt} />
-            <h3>{duck.name}</h3>
           </div>
           <div className={isGrid ? style.descriptinBlock : style.descriptList}>
-            <div className={style.description}>{duck.description}</div>
-            <div>На складе: {duck.stock}</div>
-            <div>Рейтинг: {duck.raiting}</div>
+            <div className={style.name}> {duck.name} </div>
+            <div className={style.line}></div>
+            <div className={style.descriptinBlock}>
+              <div className={style.desc}> {duck.description} </div>
+              <div> В наличии: {duck.stock} </div>
+              <div> Рейтинг: {duck.raiting} </div>
+            </div>
           </div>
         </div>
       </Link>

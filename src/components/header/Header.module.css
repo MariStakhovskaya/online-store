@@ -28,6 +28,7 @@
 .logo {
   font-family: Nexa;
   font-size: 26px;
+  cursor: pointer;
 }
 .logo > img {
   width: 70px;

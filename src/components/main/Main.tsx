@@ -4,14 +4,21 @@ import Categories from '../category/Categories';
 import Gender from '../gender/Gender';
 import Search from '../search/Search';
 import Sort from '../sort/Sort';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectDucksFiltered } from '../../redux/selectors';
 import { useState } from 'react';
 import View from '../view/View';
+import { Button } from '../custom/button/Button';
+import { changeGender } from '../../redux/slices/filterSlice';
 
 function Main() {
   const ducksData = useSelector(selectDucksFiltered);
+  const dispatch = useDispatch();
+
   const [isGrid, setIsGrid] = useState<boolean>(true);
+  const resetSettings = () => {
+    //dispatch(changeGender([]));
+  };
 
   return (
     <div className={styles.container}>
@@ -80,6 +87,7 @@ function Main() {
               />
             </div>
           </div>
+          <Button name={'Сбросить настройки'} callback={resetSettings} />
         </div>
         <div className={isGrid ? styles.products : styles.listView}>
           {ducksData &&

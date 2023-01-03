@@ -3,12 +3,14 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface FilterState {
   genderType: Array<string>;
+  categoryType: Array<string>;
   searchValue: string;
   sort: string;
 }
 
 const initialState: FilterState = {
   genderType: [],
+  categoryType: [],
   searchValue: ' ',
   sort: 'price_desc',
 };
@@ -20,6 +22,9 @@ export const filterSlice = createSlice({
     changeGender: (state, action: PayloadAction<Array<string>>) => {
       state.genderType = action.payload;
     },
+    changeCategoryType: (state, action: PayloadAction<Array<string>>) => {
+      state.categoryType = action.payload;
+    },
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
@@ -29,6 +34,7 @@ export const filterSlice = createSlice({
   },
 });
 
-export const { changeGender, setSearchValue, sort } = filterSlice.actions;
+export const { changeGender, setSearchValue, sort, changeCategoryType } =
+  filterSlice.actions;
 
 export default filterSlice.reducer;

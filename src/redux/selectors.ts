@@ -6,10 +6,11 @@ export const sectAllDucks = (state: RootState) => state.ducks.ducks;
 export const selectGender = (state: RootState) => state.filter.genderType;
 export const searchValue = (state: RootState) => state.filter.searchValue;
 export const sortValue = (state: RootState) => state.filter.sort;
+export const categoryType = (state: RootState) => state.filter.categoryType;
 
 export const selectDucksFiltered = createSelector(
-  [sectAllDucks, selectGender, searchValue, sortValue],
-  (allDucks, genderfilter, search, sort) => {
+  [sectAllDucks, selectGender, searchValue, sortValue, categoryType],
+  (allDucks, genderfilter, search, sort, category) => {
     const sortFunction = () => {
       if (sort === 'price_desc') {
         return (a: ProductType, b: ProductType) => b.price - a.price;
@@ -41,23 +42,28 @@ export const selectDucksFiltered = createSelector(
         return false;
       }
     };
-    if (genderfilter.length === 2 || genderfilter.length === 0) {
-      return allDucks
-        .filter((obj) => (search === ' ' ? obj : searchFunction(obj)))
-        .sort(sortFunction());
-    } else {
-      if (genderfilter[0] === 'мальчик') {
-        return allDucks
-          .filter((duck) => duck.gender === 'мальчик')
-          .filter((obj) => (search === ' ' ? obj : searchFunction(obj)))
-          .sort(sortFunction());
+    const filterGenderFn = (duck: ProductType) => {
+      // if (genderfilter[0] === duck.gender) {
+      if (genderfilter.includes(duck.gender)) {
+        return true;
+      } else {
+        return false;
       }
-      if (genderfilter[0] === 'девочка') {
-        return allDucks
-          .filter((duck) => duck.gender === 'девочка')
-          .filter((obj) => (search === ' ' ? obj : searchFunction(obj)))
-          .sort(sortFunction());
+    };
+    const filterCategoryFn = (duck: ProductType) => {
+      if (category.includes(duck.category)) {
+        return true;
+      } else {
+        return false;
       }
-    }
+    };
+
+    return allDucks
+      .filter((duck) => (category.length === 0 ? duck : filterCategoryFn(duck)))
+      .filter((duck) =>
+        genderfilter.length === 0 ? duck : filterGenderFn(duck)
+      )
+      .filter((obj) => (search === ' ' ? obj : searchFunction(obj)))
+      .sort(sortFunction());
   }
 );

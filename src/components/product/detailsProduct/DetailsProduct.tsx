@@ -3,6 +3,7 @@ import style from './DetailsProduct.module.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../redux/store';
+import Breadcrumbs from '../../breadcrumbs/Breadcrumbs';
 
 function DetailsProduct() {
   const ducksData = useSelector((state: RootState) => state.ducks.ducks);
@@ -16,6 +17,7 @@ function DetailsProduct() {
 
   return (
     <div className={style.wrapperProductDetails}>
+      <Breadcrumbs />
       {duckDetail && (
         <div className={style.detailsBlock}>
           <div className={style.imgBlock}>
