@@ -17,3 +17,8 @@
   .check label input {
     margin-right: 5px;
   }
+
+  .checkBlock {
+    display: flex;
+    width: 100%;
+  }
