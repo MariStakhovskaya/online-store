@@ -8,10 +8,16 @@ import { useSelector } from 'react-redux';
 import { selectDucksFiltered } from '../../redux/selectors';
 import { useState } from 'react';
 import View from '../view/View';
+import { Button } from '../custom/button/Button';
 
 function Main() {
   const ducksData = useSelector(selectDucksFiltered);
+  const allFind = ducksData.length;
+
   const [isGrid, setIsGrid] = useState<boolean>(true);
+  const resetSettings = () => {
+    //dispatch(changeGender([]));
+  };
 
   return (
     <div className={styles.container}>
@@ -80,6 +86,8 @@ function Main() {
               />
             </div>
           </div>
+          <div>Всего найдено: {allFind}</div>
+          <Button name={'Сбросить настройки'} callback={resetSettings} />
         </div>
         <div className={isGrid ? styles.products : styles.listView}>
           {ducksData &&

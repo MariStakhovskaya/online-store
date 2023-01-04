@@ -3,6 +3,7 @@ import { ChangeEvent, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setSearchValue } from '../../redux/slices/filterSlice';
 import useDebounce from '../custom/hooks/useDebounse';
+import { useSearchParams } from 'react-router-dom';
 
 function Search() {
   const [value, setValue] = useState('');
