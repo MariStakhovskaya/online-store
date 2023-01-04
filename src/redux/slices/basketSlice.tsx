@@ -29,11 +29,15 @@ const basketSlice = createSlice({
       }, 0);
     },
     removeDuck(state, action: PayloadAction<ProductType>) {
-      state.ducks.forEach((el, i) => {
-        if (el.id === action.payload.id) state.ducks.splice(i, 1);
+      let num = 0;
+      state.ducks.forEach((duck, i) => {
+        if (duck.id === action.payload.id) num = i;
       });
+      if (action.payload.count > 1)
+        state.ducks[num].count = state.ducks[num].count - 1;
+      else state.ducks.splice(num, 1);
       state.totalPrice = state.ducks.reduce((sum, duck) => {
-        return duck.price + sum;
+        return duck.price * duck.count + sum;
       }, 0);
     },
   },
