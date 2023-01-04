@@ -13,7 +13,11 @@ function Basket() {
       <div className={styles.items}>
         <div className={styles.total}>
           <p className={styles.name}> Ваши товары: </p>
-          <span> {ducks.length} </span>
+          <span>
+            {ducks.reduce((sum, duck) => {
+              return duck.count + sum;
+            }, 0)}
+          </span>
           <p>
             (<span>{totalPrice} $</span>)
           </p>

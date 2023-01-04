@@ -17,9 +17,15 @@ const basketSlice = createSlice({
   initialState,
   reducers: {
     addDuck(state, action: PayloadAction<ProductType>) {
-      state.ducks.push(action.payload);
+      let num = 0;
+      if (state.ducks.find((duck) => duck.id === action.payload.id)) {
+        state.ducks.forEach((duck, i) => {
+          if (duck.id === action.payload.id) num = i;
+        });
+        state.ducks[num].count = state.ducks[num].count + 1;
+      } else state.ducks.push({ ...action.payload, count: 1 });
       state.totalPrice = state.ducks.reduce((sum, duck) => {
-        return duck.price + sum;
+        return duck.price * duck.count + sum;
       }, 0);
     },
     removeDuck(state, action: PayloadAction<ProductType>) {
