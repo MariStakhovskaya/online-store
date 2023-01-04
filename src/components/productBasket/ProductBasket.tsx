@@ -1,12 +1,22 @@
 import { Button } from '../custom/button/Button';
 import styles from './ProductBasket.module.css';
 import { ProductType } from '../../App';
+import { useState } from 'react';
 
 export type ProductDuckType = {
   duck: ProductType;
 };
 
 function ProductBasket({ duck }: ProductDuckType) {
+  const [count, setCount] = useState(1);
+
+  const addDuck = () => {
+    setCount(count + 1);
+  };
+  const dropDuck = () => {
+    setCount(count - 1);
+  };
+
   return (
     <div className={styles.wrapperProduct}>
       <div>
@@ -23,11 +33,11 @@ function ProductBasket({ duck }: ProductDuckType) {
       </div>
       <div>
         <div className={styles.btns}>
-          <Button name={'-'} callback={() => {}} />
-          <p> 1 </p>
-          <Button name={'+'} callback={() => {}} />
+          <Button name={'-'} callback={dropDuck} />
+          <p> {count} </p>
+          <Button name={'+'} callback={addDuck} />
         </div>
-        <div className={styles.price}> 125 $ </div>
+        <div className={styles.price}> {duck.price * count} $ </div>
       </div>
     </div>
   );

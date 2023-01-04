@@ -26,6 +26,9 @@ const basketSlice = createSlice({
       state.ducks.forEach((el, i) => {
         if (el.id === action.payload.id) state.ducks.splice(i, 1);
       });
+      state.totalPrice = state.ducks.reduce((sum, duck) => {
+        return duck.price + sum;
+      }, 0);
     },
   },
 });

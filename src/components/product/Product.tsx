@@ -11,9 +11,7 @@ export type ProductDuckType = {
   isGrid: boolean;
 };
 
-
 function Product({ duck, isGrid }: ProductDuckType) {
-
   const dispatch = useDispatch();
 
   const [addCart, setAddCart] = useState(false);
