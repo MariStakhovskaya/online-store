@@ -22,7 +22,8 @@ const basketSlice = createSlice({
         state.ducks.forEach((duck, i) => {
           if (duck.id === action.payload.id) num = i;
         });
-        state.ducks[num].count = state.ducks[num].count + 1;
+        if (state.ducks[num].count < state.ducks[num].stock)
+          state.ducks[num].count = state.ducks[num].count + 1;
       } else state.ducks.push({ ...action.payload, count: 1 });
       state.totalPrice = state.ducks.reduce((sum, duck) => {
         return duck.price * duck.count + sum;

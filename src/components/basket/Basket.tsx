@@ -4,9 +4,36 @@ import styles from './Basket.module.css';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { ProductType } from '../../App';
+import { useState } from 'react';
 
 function Basket() {
   const { ducks, totalPrice } = useSelector((state: RootState) => state.basket);
+
+  const [quantity, setQuantity] = useState(ducks.length);
+  const [page, setPage] = useState(0);
+
+  const changeValue = (value: number) => {
+    setQuantity(value);
+  };
+
+  const lessPage = () => {
+    if (page > 0) setPage(page - 1);
+  };
+
+  const morePage = () => {
+    if (page < ducks.length / quantity - 1) setPage(page + 1);
+  };
+
+  const displayList = (
+    arrData: Array<ProductType>,
+    quantityProducts: number,
+    sheet: number
+  ) => {
+    const start = quantityProducts * sheet;
+    const end = start + quantityProducts;
+    const paginatedData = arrData.slice(start, end);
+    return paginatedData;
+  };
 
   return (
     <div className={styles.container}>
@@ -24,12 +51,21 @@ function Basket() {
         </div>
         <div className={styles.quantity__items}>
           <p> Товаров на странице: </p>
-          <input type="text" value="3" className={styles.quantity} />
+          <input
+            type="number"
+            onChange={(e) => {
+              changeValue(parseInt(e.target.value));
+            }}
+            min="1"
+            max={ducks.length}
+            defaultValue={ducks.length}
+            className={styles.quantity}
+          />
         </div>
       </div>
       <div className={styles.products}>
         {ducks &&
-          ducks.map((duck) => {
+          displayList(ducks, quantity, page).map((duck) => {
             return <ProductBasket key={duck.id} duck={duck} />;
           })}
       </div>
@@ -40,9 +76,11 @@ function Basket() {
           <input type="text" value="promoUtka" className={styles.promo} />
         </div>
         <div className={styles.navigation}>
-          <Button name={'<'} callback={() => {}} />
-          <p className={styles.page}> 1 </p>
-          <Button name={'>'} callback={() => {}} />
+          <Button name={'<'} callback={lessPage} />
+          <p className={styles.page}>
+            {page + 1} / {Math.ceil(ducks.length / quantity)}
+          </p>
+          <Button name={'>'} callback={morePage} />
         </div>
       </div>
     </div>
