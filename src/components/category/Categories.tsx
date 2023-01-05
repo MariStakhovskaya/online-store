@@ -3,17 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { ChangeEvent } from 'react';
 import { changeCategoryType } from '../../redux/slices/filterSlice';
 import { categoryType, selectDucksFiltered } from '../../redux/selectors';
+import { RootState } from '../../redux/store';
 
 export function Categories() {
   const dispatch = useDispatch();
   const ducksData = useSelector(selectDucksFiltered);
-
-  //const mentor = ducksData.filter((el) => el.category === 'mentor').length;
-  //const senior = ducksData.filter((el) => el.category === 'senior').length;
-  //const middle = ducksData.filter((el) => el.category === 'middle').length;
-  //const junior = ducksData.filter((el) => el.category === 'junior').length;
-  //const student1 = ducksData.filter((el) => el.category === 'student1').length;
-  //const trainee = ducksData.filter((el) => el.category === 'trainee').length;
+  const prevDD = useSelector((state: RootState) => state.ducks.ducks);
 
   const categoryR = useSelector(categoryType);
   const category: Array<string> = [
@@ -49,6 +44,8 @@ export function Categories() {
           </label>
           <span className={styles.categoryCount}>
             <span>{ducksData.filter((el) => el.category === item).length}</span>
+            <span> / </span>
+            <span>{prevDD.filter((el) => el.category === item).length}</span>
           </span>
         </div>
       ))}
