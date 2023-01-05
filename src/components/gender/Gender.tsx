@@ -2,10 +2,14 @@ import styles from '../gender/Gender.module.css';
 import { ChangeEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeGender } from '../../redux/slices/filterSlice';
-import { selectGender } from '../../redux/selectors';
+import { selectGender, selectDucksFiltered } from '../../redux/selectors';
+import { RootState } from '../../redux/store';
 
 export function Gender() {
   const dispatch = useDispatch();
+  const ducksData = useSelector(selectDucksFiltered);
+  const prevDD = useSelector((state: RootState) => state.ducks.ducks);
+  const gender: Array<string> = ['мальчик', 'девочка'];
 
   const genderR = useSelector(selectGender);
 
@@ -23,14 +27,19 @@ export function Gender() {
 
   return (
     <div className={styles.check}>
-      <label>
-        <input type="checkbox" value="мальчик" onChange={handleChange} />
-        <p> мальчик</p>
-      </label>
-      <label>
-        <input type="checkbox" value="девочка" onChange={handleChange} />
-        <p> девочка</p>
-      </label>
+      {gender.map((item, index) => (
+        <div className={styles.checkBlock} key={index}>
+          <label key={index}>
+            <input type="checkbox" onChange={handleChange} value={item} />
+            <p>{item}</p>
+          </label>
+          <span className={styles.categoryCount}>
+            <span>{ducksData.filter((el) => el.gender === item).length}</span>
+            <span> / </span>
+            <span>{prevDD.filter((el) => el.gender === item).length}</span>
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
