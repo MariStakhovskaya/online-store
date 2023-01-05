@@ -22,6 +22,7 @@ export type ProductType = {
   image2: string;
   alt: string;
   raiting: number;
+  count: number;
 };
 
 function App() {

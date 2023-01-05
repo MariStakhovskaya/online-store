@@ -28,7 +28,11 @@ function Header() {
             <Link to="basket">
               <img src={basket} alt="Корзина товаров" />
             </Link>
-            <p className={styles.quantity}> {ducks.length} </p>
+            <p className={styles.quantity}>
+              {ducks.reduce((sum, duck) => {
+                return duck.count + sum;
+              }, 0)}
+            </p>
           </div>
           <p className={styles.counter}> {totalPrice} $ </p>
         </div>
