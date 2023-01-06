@@ -1,5 +1,3 @@
-import gridView from '../../assets/icon/grid_view.png';
-import listView from '../../assets/icon/view_list.png';
 import styles from './View.module.css';
 type ViewType = {
   isGrid: boolean;
