@@ -8,7 +8,7 @@
 }
 .container {
   width: 80vw;
-  min-height: calc(100vh - 90px - 78px);
+  min-height: calc(100vh - 90px - 78px - 70px);
   font-family: Montserrat;
 }
 .total {
@@ -107,4 +107,11 @@
 }
 .products {
   width: 100%;
+}
+.empty {
+  padding-top: 50px;
+  font-size: 26px;
+}
+.duck {
+  padding-top: 40px;
 }
