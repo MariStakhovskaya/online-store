@@ -15,7 +15,7 @@ export function View({ isGrid, setIsGrid }: ViewType) {
   };
   return (
     <>
-      <div className={isGrid ? '' : styles.activeGrid}>
+      <div className={isGrid ? styles.activeGrid : ''}>
         <img src={gridView} alt="grid" onClick={onClickHandler} />
       </div>
       <div className={isGrid ? '' : styles.activeGrid}>

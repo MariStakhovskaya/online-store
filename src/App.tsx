@@ -1,13 +1,26 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Main from './components/main/Main';
 import Basket from './components/basket/Basket';
 import Page404 from './components/page404/Page404';
 import DetailsProduct from './components/product/detailsProduct/DetailsProduct';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setReduxDucks } from './redux/slices/ducksSlice';
+import {
+  setSearchValue,
+  sort,
+  changeGender,
+  changeCategoryType,
+} from './redux/slices/filterSlice';
+import {
+  sortValue,
+  searchValue,
+  selectGender,
+  categoryType,
+} from './redux/selectors';
+import qs from 'qs';
 import './App.css';
 
 export type ProductType = {
@@ -27,6 +40,61 @@ export type ProductType = {
 
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const sortPar = useSelector(sortValue);
+  const searchPar = useSelector(searchValue);
+  const genderPar = useSelector(selectGender);
+  const categoryPar = useSelector(categoryType);
+  const genderParams = genderPar
+    .filter((el) => el.isChecked === true)
+    .map((el) => el.name);
+  const gPar =
+    genderParams.length === 2
+      ? `${genderParams[0]} ${genderParams[1]}`
+      : genderParams[0];
+  const categoryParams = categoryPar
+    .filter((el) => el.isChecked === true)
+    .map((el) => el.name);
+  const gCat =
+    categoryParams.length !== 0 && categoryParams.length > 1
+      ? categoryParams.reduce((acc, el) => acc + ` ${el}`, ' ')
+      : categoryParams[0];
+  console.log(gCat);
+
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      if (params.sort) {
+        dispatch(sort(String(params.sort)));
+      }
+      if (params.search) {
+        dispatch(setSearchValue(String(params.search)));
+      }
+      if (params.gender) {
+        const arr = String(params.gender).split(' ');
+        const newValu = genderPar.map((el) => {
+          if (arr.includes(el.name)) {
+            return { ...el, isChecked: true };
+          } else {
+            return { ...el };
+          }
+        });
+        dispatch(changeGender(newValu));
+      }
+      if (params.category) {
+        const arr = String(params.category).split(' ');
+        const newValu = categoryPar.map((el) => {
+          if (arr.includes(el.name)) {
+            return { ...el, isChecked: true };
+          } else {
+            return { ...el };
+          }
+        });
+        dispatch(changeCategoryType(newValu));
+      }
+    }
+  }, []);
 
   useEffect(() => {
     axios
@@ -35,6 +103,20 @@ function App() {
         dispatch(setReduxDucks(res.data));
       });
   }, [dispatch]);
+
+  useEffect(() => {
+    const queryString = qs.stringify({
+      sort: sortPar,
+      search: searchPar,
+      gender: gPar,
+      category: gCat,
+    });
+    console.log(queryString);
+    queryString === 'sort=price_desc&search='
+      ? navigate('/')
+      : navigate(`?${queryString}`);
+    console.log(queryString);
+  }, [sortPar, searchPar, gPar, gCat]);
 
   return (
     <div className="App">

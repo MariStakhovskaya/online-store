@@ -1,5 +1,5 @@
 import styles from '../gender/Gender.module.css';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeGender } from '../../redux/slices/filterSlice';
 import { selectGender, selectDucksFiltered } from '../../redux/selectors';
@@ -9,34 +9,41 @@ export function Gender() {
   const dispatch = useDispatch();
   const ducksData = useSelector(selectDucksFiltered);
   const prevDD = useSelector((state: RootState) => state.ducks.ducks);
-  const gender: Array<string> = ['мальчик', 'девочка'];
 
   const genderR = useSelector(selectGender);
+  const [check, setCheck] = useState(genderR);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = e.target;
-    let arr: string[] = [...genderR];
-    if (checked) {
-      arr.push(value);
-      dispatch(changeGender(arr));
-    } else {
-      arr = genderR.filter((category) => category !== value);
-      dispatch(changeGender(arr));
-    }
+  const handleChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
+    const newValu = genderR.map((el) => {
+      if (el.id === id) {
+        return { ...el, isChecked: e.target.checked };
+      } else {
+        return { ...el };
+      }
+    });
+    setCheck(newValu);
+    dispatch(changeGender(newValu));
   };
 
   return (
     <div className={styles.check}>
-      {gender.map((item, index) => (
+      {genderR.map((item, index) => (
         <div className={styles.checkBlock} key={index}>
           <label key={index}>
-            <input type="checkbox" onChange={handleChange} value={item} />
-            <p>{item}</p>
+            <input
+              type="checkbox"
+              onChange={(e) => handleChange(e, item.id)}
+              value={item.name}
+              checked={item.isChecked}
+            />
+            <p>{item.name}</p>
           </label>
           <span className={styles.categoryCount}>
-            <span>{ducksData.filter((el) => el.gender === item).length}</span>
+            <span>
+              {ducksData.filter((el) => el.gender === item.name).length}
+            </span>
             <span> / </span>
-            <span>{prevDD.filter((el) => el.gender === item).length}</span>
+            <span>{prevDD.filter((el) => el.gender === item.name).length}</span>
           </span>
         </div>
       ))}

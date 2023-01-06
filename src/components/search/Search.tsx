@@ -1,12 +1,13 @@
 import styles from './Search.module.css';
 import { ChangeEvent, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValue } from '../../redux/slices/filterSlice';
 import useDebounce from '../custom/hooks/useDebounse';
-import { useSearchParams } from 'react-router-dom';
+import { searchValue } from '../../redux/selectors';
 
 function Search() {
-  const [value, setValue] = useState('');
+  const searchValueRed = useSelector(searchValue);
+  const [value, setValue] = useState(searchValueRed);
   const debouncedValue = useDebounce<string>(value, 400);
   const dispatch = useDispatch();
 
@@ -15,14 +16,14 @@ function Search() {
   };
   useEffect(() => {
     dispatch(setSearchValue(value));
-  }, [debouncedValue]);
+  }, [debouncedValue, value, dispatch]);
 
   return (
     <>
       <input
         className={styles.search}
         placeholder="Поиск"
-        value={value}
+        value={searchValueRed}
         onChange={onChangeHandler}
       />
     </>

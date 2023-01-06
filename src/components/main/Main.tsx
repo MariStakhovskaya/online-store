@@ -4,8 +4,14 @@ import Categories from '../category/Categories';
 import Gender from '../gender/Gender';
 import Search from '../search/Search';
 import Sort from '../sort/Sort';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectDucksFiltered } from '../../redux/selectors';
+import {
+  setSearchValue,
+  sort,
+  changeGender,
+  changeCategoryType,
+} from '../../redux/slices/filterSlice';
 import { useState } from 'react';
 import View from '../view/View';
 import { Button } from '../custom/button/Button';
@@ -15,8 +21,26 @@ function Main() {
   const allFind = ducksData.length;
 
   const [isGrid, setIsGrid] = useState<boolean>(true);
+  const dispatch = useDispatch();
   const resetSettings = () => {
-    //dispatch(changeGender([]));
+    dispatch(sort('price_desc'));
+    dispatch(setSearchValue(''));
+    dispatch(
+      changeGender([
+        { id: 1, name: 'девочка', isChecked: false },
+        { id: 2, name: 'мальчик', isChecked: false },
+      ])
+    );
+    dispatch(
+      changeCategoryType([
+        { id: 1, name: 'senior', isChecked: false },
+        { id: 2, name: 'middle', isChecked: false },
+        { id: 3, name: 'junior', isChecked: false },
+        { id: 4, name: 'student1', isChecked: false },
+        { id: 5, name: 'trainee', isChecked: false },
+        { id: 6, name: 'mentor', isChecked: false },
+      ])
+    );
   };
 
   return (
