@@ -16,10 +16,22 @@ export function View({ isGrid, setIsGrid }: ViewType) {
   return (
     <>
       <div className={isGrid ? styles.activeGrid : ''}>
-        <img src={gridView} alt="grid" onClick={onClickHandler} />
+        <div onClick={onClickHandler} className={styles.squares}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
       <div className={isGrid ? '' : styles.activeGrid}>
-        <img src={listView} alt="list" onClick={onClickListHandler} />
+        <div onClick={onClickListHandler} className={styles.lines}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </>
   );

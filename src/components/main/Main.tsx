@@ -110,7 +110,7 @@ function Main() {
               />
             </div>
           </div>
-          <div>Всего найдено: {allFind}</div>
+          <div className={styles.allFind}>Всего найдено: {allFind}</div>
           <Button name={'Сбросить настройки'} callback={resetSettings} />
         </div>
         <div className={isGrid ? styles.products : styles.listView}>
