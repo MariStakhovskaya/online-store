@@ -1,15 +1,18 @@
 import styles from './View.module.css';
-type ViewType = {
-  isGrid: boolean;
-  setIsGrid: (isGrid: boolean) => void;
-};
+import { changeView } from '../../redux/slices/filterSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectView } from '../../redux/selectors';
 
-export function View({ isGrid, setIsGrid }: ViewType) {
+export function View() {
+  const dispatch = useDispatch();
+  const isGrid = useSelector(selectView);
   const onClickHandler = () => {
-    setIsGrid(true);
+    //setIsGrid(true);
+    dispatch(changeView(true));
   };
   const onClickListHandler = () => {
-    setIsGrid(false);
+    //setIsGrid(false);
+    dispatch(changeView(false));
   };
   return (
     <>
