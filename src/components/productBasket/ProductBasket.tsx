@@ -1,7 +1,6 @@
 import { Button } from '../custom/button/Button';
 import styles from './ProductBasket.module.css';
 import { ProductType } from '../../App';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addDuck, removeDuck } from '../../redux/slices/basketSlice';
 import { useSelector } from 'react-redux';

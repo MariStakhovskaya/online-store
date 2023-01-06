@@ -37,6 +37,7 @@ function Basket() {
   };
 
   if (ducks.length) {
+    if (page + 1 > Math.ceil(ducks.length / quantity)) setPage(page - 1);
     return (
       <div className={styles.container}>
         <div className={styles.items}>
