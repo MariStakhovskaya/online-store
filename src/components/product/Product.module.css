@@ -5,6 +5,9 @@
     border-radius:10px;
     margin: 0;
     background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .wrapperListproduct {
@@ -31,9 +34,9 @@
     width: 200px;
     display: flex;
     justify-content: space-around;
-    margin-bottom: 10px;
-    margin-top: 15px;
     align-items: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .buttonList {
@@ -121,7 +124,7 @@
   }
   .price {
     font-size: 24px;
-    margin: 0 0 auto;
+    margin: 0;
     font-weight: bold;
     color: #000000;
   }
