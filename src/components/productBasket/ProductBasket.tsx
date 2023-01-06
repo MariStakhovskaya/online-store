@@ -1,7 +1,6 @@
 import { Button } from '../custom/button/Button';
 import styles from './ProductBasket.module.css';
 import { ProductType } from '../../App';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addDuck, removeDuck } from '../../redux/slices/basketSlice';
 import { useSelector } from 'react-redux';
@@ -15,14 +14,10 @@ function ProductBasket({ duck }: ProductDuckType) {
   const ducks = useSelector((state: RootState) => state.basket.ducks);
   const dispatch = useDispatch();
 
-  const [count, setCount] = useState(1);
-
   const moreDuck = () => {
-    setCount(count + 1);
     dispatch(addDuck(duck));
   };
   const lessDuck = () => {
-    setCount(count - 1);
     dispatch(removeDuck(duck));
   };
 
@@ -45,10 +40,10 @@ function ProductBasket({ duck }: ProductDuckType) {
         <div>
           <div className={styles.btns}>
             <Button name={'-'} callback={lessDuck} />
-            <p> {count} </p>
+            <p> {duck.count} </p>
             <Button name={'+'} callback={moreDuck} />
           </div>
-          <div className={styles.price}> {duck.price * count} $ </div>
+          <div className={styles.price}> {duck.price * duck.count} $ </div>
         </div>
       </div>
     </div>
