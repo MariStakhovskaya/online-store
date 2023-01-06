@@ -43,15 +43,20 @@ export const selectDucksFiltered = createSelector(
       }
     };
     const filterGenderFn = (duck: ProductType) => {
-      // if (genderfilter[0] === duck.gender) {
-      if (genderfilter.includes(duck.gender)) {
+      const inputs = genderfilter
+        .filter((gend) => gend.isChecked === true)
+        .map((el) => el.name);
+      if (inputs.includes(duck.gender)) {
         return true;
       } else {
         return false;
       }
     };
     const filterCategoryFn = (duck: ProductType) => {
-      if (category.includes(duck.category)) {
+      const inputs = category
+        .filter((cat) => cat.isChecked === true)
+        .map((el) => el.name);
+      if (inputs.includes(duck.category)) {
         return true;
       } else {
         return false;
@@ -59,11 +64,17 @@ export const selectDucksFiltered = createSelector(
     };
 
     return allDucks
-      .filter((duck) => (category.length === 0 ? duck : filterCategoryFn(duck)))
       .filter((duck) =>
-        genderfilter.length === 0 ? duck : filterGenderFn(duck)
+        category.filter((g) => g.isChecked === false).length === 6
+          ? duck
+          : filterCategoryFn(duck)
       )
       .filter((obj) => (search === ' ' ? obj : searchFunction(obj)))
+      .filter((duck) =>
+        genderfilter.filter((g) => g.isChecked === false).length === 2
+          ? duck
+          : filterGenderFn(duck)
+      )
       .sort(sortFunction());
   }
 );
