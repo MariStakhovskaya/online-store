@@ -20,6 +20,16 @@ function Main() {
   const ducksData = useSelector(selectDucksFiltered);
   const allFind = ducksData.length;
 
+  const [isCopied, setIsCopied] = useState(false);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.toString());
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 400);
+  };
+
   const [isGrid, setIsGrid] = useState<boolean>(true);
   const dispatch = useDispatch();
   const resetSettings = () => {
@@ -112,6 +122,10 @@ function Main() {
           </div>
           <div>Всего найдено: {allFind}</div>
           <Button name={'Сбросить настройки'} callback={resetSettings} />
+          <Button
+            name={isCopied ? 'Скопирована' : 'Скопировать ссылку'}
+            callback={copyToClipboard}
+          />
         </div>
         <div className={isGrid ? styles.products : styles.listView}>
           {ducksData &&
