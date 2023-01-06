@@ -1,54 +1,106 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+}
 .wrapperProductDetails {
+    width: 80vw;
+    min-height: calc(100vh - 90px - 78px - 70px - 30px);
+    border-radius: 10px;
+    font-family: Montserrat;
     display: flex;
     align-items: center;
-    width: 80%;
-    min-height: 60vh;
-    border: 1px solid #d3d3d3;
-    border-radius: 10px;
-    margin: 0;
-    background: #ffffff;
-    margin: 30px;
-    padding: 10px;
+    justify-content: space-around;
+    background: #f0f0f0;
+    padding: 15px;
 }
-
 .detailsBlock {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
 }
-
+.pictures {
+    display: flex;
+    align-items: center;
+    width: 48%;
+}
 .imgBlock {
     display: flex;
     flex-direction: column;
-   
 }
-
+.imgBlock > img {
+    background: #ffffff;
+}
 .smallImgBlock {
- display: flex;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
-
-.smallImgBlock img:hover {
-    border: 1px solid #d3d3d3;
-}
-
-.imgDetails{
-    width: 250px;
-    height: 250px;
+.smallImgBlock > img {
+    border: 1px #d3d3d3 solid;
     border-radius: 10px;
-    margin: 0;
+    cursor: pointer;
+    background: #ffffff;
 }
-
+.imgDetails {
+    height: 430px;
+    border-radius: 10px;
+}
+.smallImgBlock img:hover {
+    border: 1px solid #808080;
+}
 .imgSmall {
     width: 100px;
     height: 100px;
     border-radius: 10px;
     margin: 0;
 }
-
+.description {
+    width: 48%;
+    border-radius: 10px;
+}
 .nameDetails {
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 3px;
     font-weight: bold;
 }
-
+.line {
+    width: 100%;
+    background: #f2651c;
+    height: 2px;
+    margin-bottom: 20px;
+}
+.shortDesc {
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.brand__and__category {
+    display: grid;
+    grid-template-columns: 60% 35%;
+    justify-content: space-between;
+}
+.category,
+.brand {
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px #d3d3d3 solid;
+  border-radius: 10px;
+}
+.category > p,
+.brand > p {
+  text-align: left;
+  background: #ffffff;
+  border-bottom: 1px #d3d3d3 solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 5px;
+  padding-left: 15px;
+}
 .active {
-    border: 1px solid orange;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin: 0;
+    border: 1px #f2651c solid;
 }
