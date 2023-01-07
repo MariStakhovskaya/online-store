@@ -126,7 +126,7 @@ function App() {
     queryString === 'sort=price_desc&search=&gridView=true'
       ? navigate('/')
       : navigate(`?${queryString}`);
-  }, [sortPar, searchPar, gPar, gCat, gridPar, navigate]);
+  }, [sortPar, searchPar, gPar, gCat, gridPar]);
 
   return (
     <div className="App">

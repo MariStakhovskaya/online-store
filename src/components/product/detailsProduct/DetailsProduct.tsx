@@ -1,18 +1,37 @@
 import { useParams } from 'react-router-dom';
 import style from './DetailsProduct.module.css';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../../../redux/store';
 import DetailsCategory from '../../category/detailsCategories/DetailsCategory';
 import DetailsGender from '../../gender/detailsGender/DetailsGender';
 import { Button } from '../../custom/button/Button';
+import { addDuck, removeDuck } from '../../../redux/slices/basketSlice';
+import { countBasketduck } from '../../../redux/selectors';
 //import Breadcrumbs from '../../breadcrumbs/Breadcrumbs';
 
 function DetailsProduct() {
   const ducksData = useSelector((state: RootState) => state.ducks.ducks);
   const { id } = useParams<{ id: string }>();
   const duckDetail = ducksData.find((item) => (id ? item.id === +id : ''));
+  const countBasket = useSelector(countBasketduck);
+  const dispatch = useDispatch();
+
+  const countForButton = countBasket.find(
+    (el) => el.id === duckDetail?.id
+  )?.count;
   const [image, setImage] = useState<string | undefined>(duckDetail?.image);
+
+  const addToCart = () => {
+    if (duckDetail) {
+      dispatch(addDuck(duckDetail));
+    }
+  };
+  const dropFromCart = () => {
+    if (duckDetail) {
+      dispatch(removeDuck(duckDetail));
+    }
+  };
 
   const onClickImg = (src: string) => {
     setImage(src);
@@ -60,7 +79,11 @@ function DetailsProduct() {
                 {id && <DetailsGender id={parseInt(id)} />}
               </div>
             </div>
-            <Button name={'Купить'} callback={() => {}} />
+            {(countForButton !== undefined ? countForButton : 0) > 0 ? (
+              <Button name={'В корзине'} callback={dropFromCart} />
+            ) : (
+              <Button name={'Купить'} callback={addToCart} />
+            )}
           </div>
         </div>
       )}
