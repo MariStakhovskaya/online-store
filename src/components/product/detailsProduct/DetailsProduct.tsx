@@ -60,7 +60,12 @@ function DetailsProduct() {
                 {id && <DetailsGender id={parseInt(id)} />}
               </div>
             </div>
-            <Button name={'Купить'} callback={() => {}} />
+            <div className={style.price}>
+              <div>
+                <span> Цена: </span> {duckDetail.price} $
+              </div>
+              <Button name={'Купить'} callback={() => {}} />
+            </div>
           </div>
         </div>
       )}
