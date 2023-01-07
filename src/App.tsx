@@ -13,12 +13,14 @@ import {
   sort,
   changeGender,
   changeCategoryType,
+  changeView,
 } from './redux/slices/filterSlice';
 import {
   sortValue,
   searchValue,
   selectGender,
   categoryType,
+  selectView,
 } from './redux/selectors';
 import qs from 'qs';
 import './App.css';
@@ -46,27 +48,35 @@ function App() {
   const searchPar = useSelector(searchValue);
   const genderPar = useSelector(selectGender);
   const categoryPar = useSelector(categoryType);
+  const gridPar = useSelector(selectView);
+
   const genderParams = genderPar
     .filter((el) => el.isChecked === true)
     .map((el) => el.name);
+
   const gPar =
     genderParams.length === 2
       ? `${genderParams[0]} ${genderParams[1]}`
       : genderParams[0];
+
   const categoryParams = categoryPar
     .filter((el) => el.isChecked === true)
     .map((el) => el.name);
+
   const gCat =
     categoryParams.length !== 0 && categoryParams.length > 1
       ? categoryParams.reduce((acc, el) => acc + ` ${el}`, ' ')
       : categoryParams[0];
-  console.log(gCat);
 
   useEffect(() => {
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
       if (params.sort) {
         dispatch(sort(String(params.sort)));
+      }
+      if (params.gridView) {
+        const valueGrid = String(params.gridView) === 'true' ? true : false;
+        dispatch(changeView(valueGrid));
       }
       if (params.search) {
         dispatch(setSearchValue(String(params.search)));
@@ -110,13 +120,13 @@ function App() {
       search: searchPar,
       gender: gPar,
       category: gCat,
+      gridView: gridPar,
     });
-    console.log(queryString);
-    queryString === 'sort=price_desc&search='
+
+    queryString === 'sort=price_desc&search=&gridView=true'
       ? navigate('/')
       : navigate(`?${queryString}`);
-    console.log(queryString);
-  }, [sortPar, searchPar, gPar, gCat]);
+  }, [sortPar, searchPar, gPar, gCat, gridPar]);
 
   return (
     <div className="App">

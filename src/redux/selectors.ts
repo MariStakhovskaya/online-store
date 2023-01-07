@@ -7,6 +7,8 @@ export const selectGender = (state: RootState) => state.filter.genderType;
 export const searchValue = (state: RootState) => state.filter.searchValue;
 export const sortValue = (state: RootState) => state.filter.sort;
 export const categoryType = (state: RootState) => state.filter.categoryType;
+export const selectView = (state: RootState) => state.filter.viewGrid;
+export const countBasketduck = (state: RootState) => state.basket.ducks;
 
 export const selectDucksFiltered = createSelector(
   [sectAllDucks, selectGender, searchValue, sortValue, categoryType],

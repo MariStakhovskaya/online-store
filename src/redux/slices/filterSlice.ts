@@ -18,6 +18,7 @@ export interface FilterState {
   categoryType: Array<CategoryTypeObj>;
   searchValue: string;
   sort: string;
+  viewGrid: boolean;
 }
 
 const initialState: FilterState = {
@@ -35,6 +36,7 @@ const initialState: FilterState = {
   ],
   searchValue: '',
   sort: 'price_desc',
+  viewGrid: true,
 };
 
 export const filterSlice = createSlice({
@@ -60,6 +62,9 @@ export const filterSlice = createSlice({
       state.sort = action.payload;
       state.searchValue = action.payload;
     },
+    changeView: (state, action: PayloadAction<boolean>) => {
+      state.viewGrid = action.payload;
+    },
   },
 });
 
@@ -69,6 +74,7 @@ export const {
   sort,
   changeCategoryType,
   setFilters,
+  changeView,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

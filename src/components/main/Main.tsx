@@ -1,25 +1,27 @@
 import styles from './Main.module.css';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Product from '../product/Product';
 import Categories from '../category/Categories';
 import Gender from '../gender/Gender';
 import Search from '../search/Search';
 import Sort from '../sort/Sort';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectDucksFiltered } from '../../redux/selectors';
+import { selectDucksFiltered, selectView } from '../../redux/selectors';
 import {
   setSearchValue,
   sort,
   changeGender,
   changeCategoryType,
+  changeView,
 } from '../../redux/slices/filterSlice';
-import { useState } from 'react';
 import View from '../view/View';
 import { Button } from '../custom/button/Button';
 
 function Main() {
+  const dispatch = useDispatch();
   const ducksData = useSelector(selectDucksFiltered);
   const allFind = ducksData.length;
-
+  const isGrid = useSelector(selectView);
   const [isCopied, setIsCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -30,10 +32,9 @@ function Main() {
     }, 400);
   };
 
-  const [isGrid, setIsGrid] = useState<boolean>(true);
-  const dispatch = useDispatch();
   const resetSettings = () => {
     dispatch(sort('price_desc'));
+    dispatch(changeView(true));
     dispatch(setSearchValue(''));
     dispatch(
       changeGender([
@@ -59,7 +60,7 @@ function Main() {
         <Search />
         <Sort />
         <div className={styles.grid}>
-          <View isGrid={isGrid} setIsGrid={setIsGrid} />
+          <View />
         </div>
       </div>
       <div className={styles.products__and__filters}>
@@ -128,10 +129,14 @@ function Main() {
           />
         </div>
         <div className={isGrid ? styles.products : styles.listView}>
-          {ducksData &&
+          {allFind === 0 ? (
+            <div className={styles.nothingText}>Ничего не найдено</div>
+          ) : (
             ducksData.map((duck) => {
               return <Product key={duck.id} duck={duck} isGrid={isGrid} />;
-            })}
+            })
+          )}
+          ;
         </div>
       </div>
     </div>

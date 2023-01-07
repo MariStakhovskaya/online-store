@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import { Button } from '../custom/button/Button';
 import style from './Product.module.css';
 import { ProductType } from '../../App';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addDuck, removeDuck } from '../../redux/slices/basketSlice';
+import { countBasketduck } from '../../redux/selectors';
 
 export type ProductDuckType = {
   duck: ProductType;
@@ -13,15 +13,14 @@ export type ProductDuckType = {
 
 function Product({ duck, isGrid }: ProductDuckType) {
   const dispatch = useDispatch();
+  const countBasket = useSelector(countBasketduck);
 
-  const [addCart, setAddCart] = useState(false);
+  const countForButton = countBasket.find((el) => el.id === duck.id)?.count;
 
   const addToCart = () => {
-    setAddCart(true);
     dispatch(addDuck(duck));
   };
   const dropFromCart = () => {
-    setAddCart(false);
     dispatch(removeDuck(duck));
   };
   return (
@@ -45,7 +44,7 @@ function Product({ duck, isGrid }: ProductDuckType) {
       <div className={isGrid ? style.buttonBlock : style.buttonList}>
         <div className={style.price}>{duck.price} $</div>
         <div>
-          {addCart ? (
+          {(countForButton !== undefined ? countForButton : 0) > 0 ? (
             <Button name={'В корзине'} callback={dropFromCart} />
           ) : (
             <Button name={'Купить'} callback={addToCart} />
