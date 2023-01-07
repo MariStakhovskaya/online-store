@@ -136,7 +136,6 @@ function Main() {
               return <Product key={duck.id} duck={duck} isGrid={isGrid} />;
             })
           )}
-          ;
         </div>
       </div>
     </div>
