@@ -8,8 +8,17 @@ export interface DucksState {
 }
 
 const initialState: DucksState = {
-  ducks: [],
-  totalPrice: 0,
+  ducks: localStorage.getItem('ducks')
+    ? JSON.parse(localStorage.getItem('ducks') as string)
+    : [],
+  totalPrice: localStorage.getItem('ducks')
+    ? JSON.parse(localStorage.getItem('ducks') as string).reduce(
+        (sum: number, duck: ProductType) => {
+          return sum + duck.price * duck.count;
+        },
+        0
+      )
+    : 0,
 };
 
 const basketSlice = createSlice({
@@ -24,10 +33,13 @@ const basketSlice = createSlice({
         });
         if (state.ducks[num].count < state.ducks[num].stock)
           state.ducks[num].count = state.ducks[num].count + 1;
-      } else state.ducks.push({ ...action.payload, count: 1 });
+      } else {
+        state.ducks.push({ ...action.payload, count: 1 });
+      }
       state.totalPrice = state.ducks.reduce((sum, duck) => {
         return duck.price * duck.count + sum;
       }, 0);
+      localStorage.setItem('ducks', JSON.stringify(state.ducks));
     },
     removeDuck(state, action: PayloadAction<ProductType>) {
       let num = 0;
@@ -40,6 +52,7 @@ const basketSlice = createSlice({
       state.totalPrice = state.ducks.reduce((sum, duck) => {
         return duck.price * duck.count + sum;
       }, 0);
+      localStorage.setItem('ducks', JSON.stringify(state.ducks));
     },
   },
 });
