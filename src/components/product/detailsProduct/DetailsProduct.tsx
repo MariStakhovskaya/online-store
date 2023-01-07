@@ -79,20 +79,16 @@ function DetailsProduct() {
                 {id && <DetailsGender id={parseInt(id)} />}
               </div>
             </div>
-
-            {(countForButton !== undefined ? countForButton : 0) > 0 ? (
-              <Button name={'В корзине'} callback={dropFromCart} />
-            ) : (
-              <Button name={'Купить'} callback={addToCart} />
-            )}
-
             <div className={style.price}>
               <div>
                 <span> Цена: </span> {duckDetail.price} $
               </div>
-              <Button name={'Купить'} callback={() => {}} />
+              {(countForButton !== undefined ? countForButton : 0) > 0 ? (
+                <Button name={'В корзине'} callback={dropFromCart} />
+              ) : (
+                <Button name={'Купить'} callback={addToCart} />
+              )}
             </div>
-
           </div>
         </div>
       )}
