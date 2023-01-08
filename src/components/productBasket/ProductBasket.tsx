@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { addDuck, removeDuck } from '../../redux/slices/basketSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
+import { Link } from 'react-router-dom';
 
 export type ProductDuckType = {
   duck: ProductType;
@@ -26,10 +27,18 @@ function ProductBasket({ duck }: ProductDuckType) {
       <div className={styles.counter}> {ducks.indexOf(duck) + 1} </div>
       <div className={styles.wrapperProduct}>
         <div>
-          <img className={styles.imgProduct} src={duck.image} alt={duck.alt} />
+          <Link to={`/details/${duck.id}`}>
+            <img
+              className={styles.imgProduct}
+              src={duck.image}
+              alt={duck.alt}
+            />
+          </Link>
         </div>
         <div className={styles.description}>
-          <div className={styles.name}> {duck.name} </div>
+          <div className={styles.name}>
+            <Link to={`/details/${duck.id}`}>{duck.name} </Link>
+          </div>
           <div className={styles.line}></div>
           <div className={styles.descriptinBlock}>
             <div className={styles.desc}> {duck.description} </div>
