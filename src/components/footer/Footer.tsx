@@ -13,9 +13,15 @@ function Footer() {
         <p> 2022 </p>
       </div>
       <div className={styles.links}>
-        <img src={github} />
-        <img src={github} />
-        <img src={rsschool} />
+        <a href="https://github.com/Daryaisme">
+          <img src={github} alt="github link" />
+        </a>
+        <a href="https://github.com/MariStakhovskaya">
+          <img src={github} alt="github link" />
+        </a>
+        <a href="https://rs.school/js/">
+          <img src={rsschool} alt="rsschool link" />
+        </a>
       </div>
     </div>
   );

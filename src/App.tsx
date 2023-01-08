@@ -29,6 +29,7 @@ export type ProductType = {
   id: number;
   name: string;
   description: string;
+  fullDescription: string;
   category: string;
   gender: string;
   price: number;
