@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/online-store/static/css/main.8850fff1.css",
-    "main.js": "/online-store/static/js/main.e2015d3b.js",
-    "static/media/page404.png": "/online-store/static/media/page404.97c3922bdcd3b04d771b.png",
-    "static/media/Montserrat-Regular.ttf": "/online-store/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
-    "static/media/nexa-script-thin.ttf": "/online-store/static/media/nexa-script-thin.45a9e140dbd337802428.ttf",
-    "static/media/ducks_bg1.png": "/online-store/static/media/ducks_bg1.85c312b7fba50035d0ab.png",
-    "static/media/ducks_bg2.png": "/online-store/static/media/ducks_bg2.ca389b3755d2ffbd56a9.png",
-    "static/media/logo-duckyduck.png": "/online-store/static/media/logo-duckyduck.68d80bc12eb693c69d99.png",
-    "static/media/glass.png": "/online-store/static/media/glass.7576ac8cb5998cbf6229.png",
-    "static/media/rs_school_js.svg": "/online-store/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
-    "index.html": "/online-store/index.html",
-    "main.8850fff1.css.map": "/online-store/static/css/main.8850fff1.css.map",
-    "main.e2015d3b.js.map": "/online-store/static/js/main.e2015d3b.js.map"
+    "main.css": "/static/css/main.45883e14.css",
+    "main.js": "/static/js/main.315d17be.js",
+    "static/media/page404.png": "/static/media/page404.97c3922bdcd3b04d771b.png",
+    "static/media/Montserrat-Regular.ttf": "/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
+    "static/media/nexa-script-thin.ttf": "/static/media/nexa-script-thin.45a9e140dbd337802428.ttf",
+    "static/media/ducks_bg1.png": "/static/media/ducks_bg1.85c312b7fba50035d0ab.png",
+    "static/media/ducks_bg2.png": "/static/media/ducks_bg2.ca389b3755d2ffbd56a9.png",
+    "static/media/logo-duckyduck.png": "/static/media/logo-duckyduck.68d80bc12eb693c69d99.png",
+    "static/media/glass.png": "/static/media/glass.7576ac8cb5998cbf6229.png",
+    "static/media/rs_school_js.svg": "/static/media/rs_school_js.ad178c0df28bc133be34b982d62f431d.svg",
+    "index.html": "/index.html",
+    "main.45883e14.css.map": "/static/css/main.45883e14.css.map",
+    "main.315d17be.js.map": "/static/js/main.315d17be.js.map"
   },
   "entrypoints": [
-    "static/css/main.8850fff1.css",
-    "static/js/main.e2015d3b.js"
+    "static/css/main.45883e14.css",
+    "static/js/main.315d17be.js"
   ]
 }
