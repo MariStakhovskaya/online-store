@@ -25,8 +25,8 @@ function Basket() {
     (state: RootState) => state.basket
   );
 
-  const [quantity, setQuantity] = useState(ducks.length);
-  const [page, setPage] = useState(0);
+  const [quantity, setQuantity] = useState(limit);
+  const [page, setPage] = useState(currentPage - 1);
 
   const changeValue = (value: number) => {
     setQuantity(value);
@@ -63,8 +63,9 @@ function Basket() {
       limit,
       currentPage,
     });
-    navigate(`?${queryString}`);
-    console.log(queryString);
+    queryString === `limit=${ducks.length}&currentPage=1`
+      ? navigate('/basket')
+      : navigate(`/basket?${queryString}`);
   }, [limit, currentPage]);
 
   if (ducks.length) {
@@ -95,14 +96,14 @@ function Basket() {
               }}
               min="1"
               max={ducks.length}
-              defaultValue={ducks.length}
+              defaultValue={limit}
               className={styles.quantity}
             />
           </div>
         </div>
         <div className={styles.products}>
           {ducks &&
-            displayList(ducks, quantity, page).map((duck) => {
+            displayList(ducks, limit, currentPage - 1).map((duck) => {
               return <ProductBasket key={duck.id} duck={duck} />;
             })}
         </div>

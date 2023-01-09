@@ -65,6 +65,8 @@ const basketSlice = createSlice({
     setQuery(state, action) {
       state.limit = Number(action.payload.limit);
       state.currentPage = Number(action.payload.currentPage);
+      localStorage.setItem('limit', JSON.stringify(state.limit));
+      localStorage.setItem('currentPage', JSON.stringify(state.currentPage));
     },
   },
 });
