@@ -69,6 +69,7 @@ function DetailsProduct() {
             <h2 className={style.nameDetails}>{duckDetail.name}</h2>
             <div className={style.line}></div>
             <div className={style.shortDesc}>{duckDetail.description}</div>
+            <div className={style.shortDesc}>{duckDetail.fullDescription}</div>
             <div className={style.brand__and__category}>
               <div className={style.category}>
                 <p> Категория </p>

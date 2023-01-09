@@ -5,7 +5,7 @@ import { changeGender } from '../../redux/slices/filterSlice';
 import { selectGender, selectDucksFiltered } from '../../redux/selectors';
 import { RootState } from '../../redux/store';
 
-export function Gender() {
+function Gender() {
   const dispatch = useDispatch();
   const ducksData = useSelector(selectDucksFiltered);
   const prevDD = useSelector((state: RootState) => state.ducks.ducks);

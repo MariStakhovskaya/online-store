@@ -19,6 +19,8 @@ export interface FilterState {
   searchValue: string;
   sort: string;
   viewGrid: boolean;
+  maxProductPrice: number;
+  minProductPrice: number;
 }
 
 const initialState: FilterState = {
@@ -37,6 +39,8 @@ const initialState: FilterState = {
   searchValue: '',
   sort: 'price_desc',
   viewGrid: true,
+  maxProductPrice: 0,
+  minProductPrice: 0,
 };
 
 export const filterSlice = createSlice({
@@ -65,6 +69,13 @@ export const filterSlice = createSlice({
     changeView: (state, action: PayloadAction<boolean>) => {
       state.viewGrid = action.payload;
     },
+    setMaxMinPrice: (
+      state,
+      action: PayloadAction<{ min: number; max: number }>
+    ) => {
+      state.maxProductPrice = action.payload.max;
+      state.minProductPrice = action.payload.min;
+    },
   },
 });
 
@@ -75,6 +86,7 @@ export const {
   changeCategoryType,
   setFilters,
   changeView,
+  setMaxMinPrice,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

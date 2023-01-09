@@ -1,0 +1,28 @@
+input[type="range"] {
+    position: absolute;
+    width: calc(100% - 30px);
+    top: 71.5%;
+    left: 15px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    pointer-events: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #f1ac8a;
+    border: 1px solid #f2651c;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    pointer-events: auto;
+  }
+  input[type=range]::-moz-range-thumb {
+    background: #f1ac8a;
+    border: 1px solid #f2651c;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+  }
