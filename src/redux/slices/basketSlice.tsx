@@ -23,10 +23,10 @@ const initialState: DucksState = {
     : 0,
   limit: localStorage.getItem('limit')
     ? JSON.parse(localStorage.getItem('limit') as string)
-    : 0,
+    : JSON.parse(localStorage.getItem('ducks') as string).length,
   currentPage: localStorage.getItem('currentPage')
     ? JSON.parse(localStorage.getItem('currentPage') as string)
-    : 0,
+    : 1,
 };
 
 const basketSlice = createSlice({

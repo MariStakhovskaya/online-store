@@ -30,14 +30,21 @@ function Basket() {
 
   const changeValue = (value: number) => {
     setQuantity(value);
+    dispatch(setQuery({ limit: value, currentPage: currentPage }));
   };
 
   const lessPage = () => {
-    if (page > 0) setPage(page - 1);
+    if (page > 0) {
+      setPage(page - 1);
+      dispatch(setQuery({ limit: limit, currentPage: page }));
+    }
   };
 
   const morePage = () => {
-    if (page < ducks.length / quantity - 1) setPage(page + 1);
+    if (page < ducks.length / quantity - 1) {
+      setPage(page + 1);
+      dispatch(setQuery({ limit: limit, currentPage: page + 2 }));
+    }
   };
 
   const displayList = (
@@ -61,7 +68,10 @@ function Basket() {
   }, [limit, currentPage]);
 
   if (ducks.length) {
-    if (page + 1 > Math.ceil(ducks.length / quantity)) setPage(page - 1);
+    if (page + 1 > Math.ceil(ducks.length / quantity)) {
+      setPage(page - 1);
+      dispatch(setQuery({ limit: limit, currentPage: page }));
+    }
     return (
       <div className={styles.container}>
         <div className={styles.items}>
