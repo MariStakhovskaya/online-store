@@ -115,6 +115,7 @@ function App() {
         dispatch(changeCategoryType(newValu));
       }
     }
+    console.log(window.location.search);
   }, []);
 
   useEffect(() => {
@@ -130,6 +131,7 @@ function App() {
     }
 
     isMouted.current = true;
+    console.log(window.location.search);
   }, [sortPar, searchPar, gPar, gCat, gridPar]);
 
   return (
