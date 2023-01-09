@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
@@ -8,6 +8,7 @@ import Page404 from './components/page404/Page404';
 import DetailsProduct from './components/product/detailsProduct/DetailsProduct';
 import { useDispatch, useSelector } from 'react-redux';
 import { setReduxDucks } from './redux/slices/ducksSlice';
+
 import {
   setSearchValue,
   sort,
@@ -50,6 +51,15 @@ function App() {
   const genderPar = useSelector(selectGender);
   const categoryPar = useSelector(categoryType);
   const gridPar = useSelector(selectView);
+  const isMouted = useRef(false);
+
+  useEffect(() => {
+    axios
+      .get('https://631e4b429f946df7dc40b245.mockapi.io/ducks')
+      .then((res) => {
+        dispatch(setReduxDucks(res.data));
+      });
+  }, [dispatch]);
 
   const genderParams = genderPar
     .filter((el) => el.isChecked === true)
@@ -108,25 +118,18 @@ function App() {
   }, []);
 
   useEffect(() => {
-    axios
-      .get('https://631e4b429f946df7dc40b245.mockapi.io/ducks')
-      .then((res) => {
-        dispatch(setReduxDucks(res.data));
+    if (isMouted.current) {
+      const queryString = qs.stringify({
+        sort: sortPar,
+        search: searchPar,
+        gender: gPar,
+        category: gCat,
+        gridView: gridPar,
       });
-  }, [dispatch]);
+      navigate(`?${queryString}`);
+    }
 
-  useEffect(() => {
-    const queryString = qs.stringify({
-      sort: sortPar,
-      search: searchPar,
-      gender: gPar,
-      category: gCat,
-      gridView: gridPar,
-    });
-
-    queryString === 'sort=price_desc&search=&gridView=true'
-      ? navigate('/')
-      : navigate(`?${queryString}`);
+    isMouted.current = true;
   }, [sortPar, searchPar, gPar, gCat, gridPar]);
 
   return (
