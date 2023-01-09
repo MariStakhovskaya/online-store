@@ -9,6 +9,8 @@ export const sortValue = (state: RootState) => state.filter.sort;
 export const categoryType = (state: RootState) => state.filter.categoryType;
 export const selectView = (state: RootState) => state.filter.viewGrid;
 export const countBasketduck = (state: RootState) => state.basket.ducks;
+export const minV = (state: RootState) => state.filter.minProductPrice;
+export const maxV = (state: RootState) => state.filter.maxProductPrice;
 
 export const selectDucksFiltered = createSelector(
   [sectAllDucks, selectGender, searchValue, sortValue, categoryType],
