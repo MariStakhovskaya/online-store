@@ -1,14 +1,29 @@
 import { Button } from '../custom/button/Button';
 import ProductBasket from '../productBasket/ProductBasket';
 import styles from './Basket.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { ProductType } from '../../App';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import image404 from '../../assets/img/page404.png';
+import qs from 'qs';
+import { useNavigate } from 'react-router-dom';
+import { setQuery } from '../../redux/slices/basketSlice';
 
 function Basket() {
-  const { ducks, totalPrice } = useSelector((state: RootState) => state.basket);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      dispatch(setQuery({ ...params }));
+    }
+  }, []);
+
+  const { ducks, totalPrice, limit, currentPage } = useSelector(
+    (state: RootState) => state.basket
+  );
 
   const [quantity, setQuantity] = useState(ducks.length);
   const [page, setPage] = useState(0);
@@ -35,6 +50,15 @@ function Basket() {
     const paginatedData = arrData.slice(start, end);
     return paginatedData;
   };
+
+  useEffect(() => {
+    const queryString = qs.stringify({
+      limit,
+      currentPage,
+    });
+    navigate(`?${queryString}`);
+    console.log(queryString);
+  }, [limit, currentPage]);
 
   if (ducks.length) {
     if (page + 1 > Math.ceil(ducks.length / quantity)) setPage(page - 1);

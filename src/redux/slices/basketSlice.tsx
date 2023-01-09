@@ -5,6 +5,8 @@ import { ProductType } from '../../App';
 export interface DucksState {
   ducks: Array<ProductType>;
   totalPrice: number;
+  limit: number;
+  currentPage: number;
 }
 
 const initialState: DucksState = {
@@ -18,6 +20,12 @@ const initialState: DucksState = {
         },
         0
       )
+    : 0,
+  limit: localStorage.getItem('limit')
+    ? JSON.parse(localStorage.getItem('limit') as string)
+    : 0,
+  currentPage: localStorage.getItem('currentPage')
+    ? JSON.parse(localStorage.getItem('currentPage') as string)
     : 0,
 };
 
@@ -54,9 +62,13 @@ const basketSlice = createSlice({
       }, 0);
       localStorage.setItem('ducks', JSON.stringify(state.ducks));
     },
+    setQuery(state, action) {
+      state.limit = Number(action.payload.limit);
+      state.currentPage = Number(action.payload.currentPage);
+    },
   },
 });
 
-export const { addDuck, removeDuck } = basketSlice.actions;
+export const { addDuck, removeDuck, setQuery } = basketSlice.actions;
 
 export default basketSlice.reducer;
