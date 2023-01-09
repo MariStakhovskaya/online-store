@@ -63,7 +63,7 @@ function Basket() {
       limit,
       currentPage,
     });
-    queryString === `limit=${ducks.length}&currentPage=1`
+    queryString === `limit=3&currentPage=1`
       ? navigate('/basket')
       : navigate(`/basket?${queryString}`);
   }, [limit, currentPage]);

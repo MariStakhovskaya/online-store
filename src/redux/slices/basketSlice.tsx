@@ -23,7 +23,7 @@ const initialState: DucksState = {
     : 0,
   limit: localStorage.getItem('limit')
     ? JSON.parse(localStorage.getItem('limit') as string)
-    : JSON.parse(localStorage.getItem('ducks') as string).length,
+    : 3,
   currentPage: localStorage.getItem('currentPage')
     ? JSON.parse(localStorage.getItem('currentPage') as string)
     : 1,
