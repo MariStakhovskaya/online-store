@@ -4,46 +4,74 @@ import styles from './Basket.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { ProductType } from '../../App';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, ChangeEvent } from 'react';
 import image404 from '../../assets/img/page404.png';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
-import { setQuery } from '../../redux/slices/basketSlice';
+import { setCurrentPage, setLimit } from '../../redux/slices/basketSlice';
 
 function Basket() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isMouted1 = useRef(false);
 
-  useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
-      dispatch(setQuery({ ...params }));
-    }
-  }, []);
-
+  //const currentPar = useSelector(currentPageR);
+  //const limitPar = useSelector(limitR);
   const { ducks, totalPrice, limit, currentPage } = useSelector(
     (state: RootState) => state.basket
   );
-
   const [quantity, setQuantity] = useState(limit);
   const [page, setPage] = useState(currentPage - 1);
 
+  useEffect(() => {
+    if (window.location.hash) {
+      const params = qs.parse(window.location.hash.substring(10));
+      //dispatch(setQuery({ ...params }));
+      if (params.currentPagePar) {
+        console.log(params.currentPagePar);
+        dispatch(setCurrentPage(Number(params.currentPagePar)));
+        //dispatch(setLimit(Number(params.limit)));
+      }
+      if (params.limit) {
+        console.log(params.limitPar);
+        dispatch(setLimit(Number(params.limitPar)));
+        //dispatch(setCurrentPage(Number(params.currentPage)));
+      }
+    }
+    console.log(window.location.hash);
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isMouted1.current) {
+      const queryString = qs.stringify({
+        limitPar: limit,
+        currentPagePar: currentPage,
+      });
+      navigate(`/basket/?${queryString}`);
+    }
+    isMouted1.current = true;
+  }, [limit, currentPage, navigate]);
+
   const changeValue = (value: number) => {
     setQuantity(value);
-    dispatch(setQuery({ limit: value, currentPage: currentPage }));
+    dispatch(setLimit(value));
+    //dispatch(setQuery({ limit: value, currentPage: currentPage }));
   };
 
   const lessPage = () => {
     if (page > 0) {
       setPage(page - 1);
-      dispatch(setQuery({ limit: limit, currentPage: page }));
+      //dispatch(setQuery({ limit: limit, currentPage: page }));
+      //dispatch(setLimit(limit));
+      dispatch(setCurrentPage(page));
     }
   };
 
   const morePage = () => {
     if (page < ducks.length / quantity - 1) {
       setPage(page + 1);
-      dispatch(setQuery({ limit: limit, currentPage: page + 2 }));
+      //dispatch(setQuery({ limit: limit, currentPage: page + 2 }));
+      dispatch(setCurrentPage(page + 2));
     }
   };
 
@@ -58,21 +86,13 @@ function Basket() {
     return paginatedData;
   };
 
-  useEffect(() => {
-    const queryString = qs.stringify({
-      limit,
-      currentPage,
-    });
-    queryString === `limit=3&currentPage=1`
-      ? navigate('/basket')
-      : navigate(`/basket?${queryString}`);
-  }, [limit, currentPage]);
-
   if (ducks.length) {
     if (page + 1 > Math.ceil(ducks.length / quantity)) {
       setPage(page - 1);
-      dispatch(setQuery({ limit: limit, currentPage: page }));
+      //dispatch(setQuery({ limit: limit, currentPage: page }));
+      dispatch(setCurrentPage(page));
     }
+
     return (
       <div className={styles.container}>
         <div className={styles.items}>
@@ -91,12 +111,12 @@ function Basket() {
             <p> Товаров на странице: </p>
             <input
               type="number"
-              onChange={(e) => {
-                changeValue(parseInt(e.target.value));
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                changeValue(+e.currentTarget.value);
               }}
               min="1"
               max={ducks.length}
-              defaultValue={limit}
+              value={limit}
               className={styles.quantity}
             />
           </div>
@@ -116,7 +136,7 @@ function Basket() {
           <div className={styles.navigation}>
             <Button name={'<'} callback={lessPage} />
             <p className={styles.page}>
-              {page + 1} / {Math.ceil(ducks.length / quantity)}
+              {currentPage} / {Math.ceil(ducks.length / quantity)}
             </p>
             <Button name={'>'} callback={morePage} />
           </div>

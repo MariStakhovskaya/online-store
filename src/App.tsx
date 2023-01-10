@@ -80,8 +80,8 @@ function App() {
       : categoryParams[0];
 
   useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
+    if (window.location.hash) {
+      const params = qs.parse(window.location.hash.substring(3));
       if (params.sort) {
         dispatch(sort(String(params.sort)));
       }
@@ -115,8 +115,7 @@ function App() {
         dispatch(changeCategoryType(newValu));
       }
     }
-    console.log(window.location.search);
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (isMouted.current) {
@@ -131,7 +130,6 @@ function App() {
     }
 
     isMouted.current = true;
-    console.log(window.location.search);
   }, [sortPar, searchPar, gPar, gCat, gridPar]);
 
   return (

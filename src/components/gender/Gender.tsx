@@ -1,5 +1,5 @@
 import styles from '../gender/Gender.module.css';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeGender } from '../../redux/slices/filterSlice';
 import { selectGender, selectDucksFiltered } from '../../redux/selectors';
@@ -11,7 +11,7 @@ function Gender() {
   const prevDD = useSelector((state: RootState) => state.ducks.ducks);
 
   const genderR = useSelector(selectGender);
-  const [check, setCheck] = useState(genderR);
+  //const [check, setCheck] = useState(genderR);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>, id: number) => {
     const newValu = genderR.map((el) => {
@@ -21,7 +21,7 @@ function Gender() {
         return { ...el };
       }
     });
-    setCheck(newValu);
+    //setCheck(newValu);
     dispatch(changeGender(newValu));
   };
 

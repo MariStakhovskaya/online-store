@@ -22,10 +22,10 @@ const initialState: DucksState = {
       )
     : 0,
   limit: localStorage.getItem('limit')
-    ? JSON.parse(localStorage.getItem('limit') as string)
+    ? +JSON.parse(localStorage.getItem('limit') as string)
     : 3,
   currentPage: localStorage.getItem('currentPage')
-    ? JSON.parse(localStorage.getItem('currentPage') as string)
+    ? +JSON.parse(localStorage.getItem('currentPage') as string)
     : 1,
 };
 
@@ -68,9 +68,18 @@ const basketSlice = createSlice({
       localStorage.setItem('limit', JSON.stringify(state.limit));
       localStorage.setItem('currentPage', JSON.stringify(state.currentPage));
     },
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
+      localStorage.setItem('currentPage', JSON.stringify(state.currentPage));
+    },
+    setLimit: (state, action: PayloadAction<number>) => {
+      state.limit = action.payload;
+      localStorage.setItem('limit', JSON.stringify(state.limit));
+    },
   },
 });
 
-export const { addDuck, removeDuck, setQuery } = basketSlice.actions;
+export const { addDuck, removeDuck, setQuery, setCurrentPage, setLimit } =
+  basketSlice.actions;
 
 export default basketSlice.reducer;
