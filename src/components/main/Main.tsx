@@ -87,6 +87,7 @@ function Main() {
                 max="100"
                 value="0"
                 className={styles.range__left}
+                onChange={() => {}}
               />
               <input
                 type="range"
@@ -94,6 +95,7 @@ function Main() {
                 max="100"
                 value="100"
                 className={styles.range__right}
+                onChange={() => {}}
               />
             </div>
           </div>
@@ -111,6 +113,7 @@ function Main() {
                 max="100"
                 value="0"
                 className={styles.range__left}
+                onChange={() => {}}
               />
               <input
                 type="range"
@@ -118,6 +121,7 @@ function Main() {
                 max="100"
                 value="100"
                 className={styles.range__right}
+                onChange={() => {}}
               />
             </div>
           </div>

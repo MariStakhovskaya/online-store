@@ -26,6 +26,7 @@ function DetailsCategory(props: DetailsCategoryProps) {
                 category ===
                 ducks.find((duck) => duck.id === props.id)?.category
               }
+              onChange={() => {}}
             />
             <p>{category}</p>
           </label>

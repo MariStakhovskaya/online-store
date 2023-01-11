@@ -1,5 +1,4 @@
-import React, { useEffect, useRef } from 'react';
-import axios from 'axios';
+import { useEffect, useRef } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Main from './components/main/Main';
@@ -25,6 +24,7 @@ import {
 } from './redux/selectors';
 import qs from 'qs';
 import './App.css';
+import json from './data/products.json';
 
 export type ProductType = {
   id: number;
@@ -45,6 +45,10 @@ export type ProductType = {
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dataProduct = json;
+  useEffect(() => {
+    dispatch(setReduxDucks(dataProduct));
+  }, [dispatch, dataProduct]);
 
   const sortPar = useSelector(sortValue);
   const searchPar = useSelector(searchValue);
@@ -52,14 +56,6 @@ function App() {
   const categoryPar = useSelector(categoryType);
   const gridPar = useSelector(selectView);
   const isMouted = useRef(false);
-
-  useEffect(() => {
-    axios
-      .get('https://631e4b429f946df7dc40b245.mockapi.io/ducks')
-      .then((res) => {
-        dispatch(setReduxDucks(res.data));
-      });
-  }, [dispatch]);
 
   const genderParams = genderPar
     .filter((el) => el.isChecked === true)
