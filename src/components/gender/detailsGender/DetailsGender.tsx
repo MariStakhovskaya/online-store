@@ -18,6 +18,7 @@ function DetailsGender(props: DetailsGenderProps) {
               checked={
                 gender === ducks.find((duck) => duck.id === props.id)?.gender
               }
+              onChange={() => {}}
             />
             <p>{gender}</p>
           </label>

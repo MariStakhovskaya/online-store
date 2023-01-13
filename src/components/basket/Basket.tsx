@@ -131,7 +131,12 @@ function Basket() {
           <div>
             <button className={styles.buy}> КУПИТЬ </button>
             <p className={styles.promo__text}> ПРОМОКОД: </p>
-            <input type="text" value="promoUtka" className={styles.promo} />
+            <input
+              type="text"
+              value="promoUtka"
+              className={styles.promo}
+              onChange={() => {}}
+            />
           </div>
           <div className={styles.navigation}>
             <Button name={'<'} callback={lessPage} />

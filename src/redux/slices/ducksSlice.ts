@@ -27,22 +27,8 @@ export const ducksSlice = createSlice({
   initialState,
   reducers: {
     setReduxDucks: (state, action: PayloadAction<Array<ProductType>>) => {
-      state.ducks = action.payload;
+      return { ...state, ducks: action.payload };
     },
-  },
-  extraReducers: {
-    //[fetchDucks.pending]: (state, action: PayloadAction<string>) => {
-    //  state.status = 'loading';
-    //  state.ducks = [];
-    //},
-    //[fetchDucks.fulfilled]: (state, action: PayloadAction<string>) => {
-    //  state.ducks = action.payload;
-    //  state.status = 'succsess';
-    //},
-    //[fetchDucks.rejected]: (state, action: PayloadAction<string>) => {
-    //  state.status = 'error';
-    //  state.ducks = [];
-    //},
   },
 });
 

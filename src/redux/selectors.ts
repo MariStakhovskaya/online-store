@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { ProductType } from '../App';
 import type { RootState } from './store';
 
-export const sectAllDucks = (state: RootState) => state.ducks.ducks;
+export const sectAllDucks = (state: RootState) => state.ducks;
 export const selectGender = (state: RootState) => state.filter.genderType;
 export const searchValue = (state: RootState) => state.filter.searchValue;
 export const sortValue = (state: RootState) => state.filter.sort;
@@ -67,7 +67,7 @@ export const selectDucksFiltered = createSelector(
       }
     };
 
-    return allDucks
+    return allDucks.ducks
       .filter((duck) =>
         category.filter((g) => g.isChecked === false).length === 6
           ? duck

@@ -13,6 +13,7 @@ import { countBasketduck } from '../../../redux/selectors';
 function DetailsProduct() {
   const ducksData = useSelector((state: RootState) => state.ducks.ducks);
   const { id } = useParams<{ id: string }>();
+
   const duckDetail = ducksData.find((item) => (id ? item.id === +id : ''));
   const countBasket = useSelector(countBasketduck);
   const dispatch = useDispatch();
@@ -20,7 +21,12 @@ function DetailsProduct() {
   const countForButton = countBasket.find(
     (el) => el.id === duckDetail?.id
   )?.count;
-  const [image, setImage] = useState<string | undefined>(duckDetail?.image);
+  let duckImg = '';
+  if (duckDetail) {
+    duckImg = duckDetail.image;
+  }
+
+  const [image, setImage] = useState<string>(duckImg);
 
   const addToCart = () => {
     if (duckDetail) {
@@ -60,7 +66,7 @@ function DetailsProduct() {
             <div className={style.imgBlock}>
               <img
                 className={style.imgDetails}
-                src={image}
+                src={image ? image : duckDetail.image}
                 alt={duckDetail.alt}
               />
             </div>
