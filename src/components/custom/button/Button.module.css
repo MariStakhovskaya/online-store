@@ -1,0 +1,17 @@
+.buttonCustom {
+    background-color: #f4b66b;
+    border: none;
+    color: black;
+    padding: 8px 25px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    outline: 0;
+}
+button:hover {
+    background-color: #f2651c;
+}

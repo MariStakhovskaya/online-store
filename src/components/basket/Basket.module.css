@@ -1,0 +1,117 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat-Regular.ttf);
+}
+.container {
+  width: 80vw;
+  min-height: calc(100vh - 90px - 78px - 70px);
+  font-family: Montserrat;
+}
+.total {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  font-size: 24px;
+  margin-left: 80px;
+  padding: 15px 0;
+}
+.total > p,
+.total > span {
+  margin: 0;
+}
+.items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quantity__items .quantity {
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
+  font-weight: semibold;
+  text-align: center;
+}
+.quantity__items {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+.name {
+  color: #f2651c;
+}
+.product {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.count {
+  width: 50px;
+  height: 50px;
+  background: #f2651c;
+  border-radius: 50%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #ffffff;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.btns > div {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.page {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+.btns button {
+  font-size: 20px;
+}
+.buy {
+  padding: 12px 40px;
+  cursor: pointer;
+  background: #f2651c;
+  border: 2px red solid;
+  border-radius: 10px;
+  color: white;
+  margin-left: 78px;
+  margin-right: 10px;
+}
+.buy:hover {
+  background: red;
+}
+.promo {
+  border: 1px lightgray solid;
+  border-radius: 10px;
+  padding: 3px 5px;
+}
+.promo__text {
+  margin-right: 10px;
+  font-weight: bold;
+}
+.navigation {
+  gap: 30px;
+}
+.products {
+  width: 100%;
+}
+.empty {
+  padding-top: 50px;
+  font-size: 26px;
+}
+.duck {
+  padding-top: 40px;
+}

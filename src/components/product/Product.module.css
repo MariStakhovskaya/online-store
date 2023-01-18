@@ -1,0 +1,136 @@
+.wrapperProduct {
+    width: 300px;
+    height: auto;
+    border: 1px solid #d3d3d3;
+    border-radius:10px;
+    margin: 0;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrapperListproduct {
+    height: 250px;
+    width: 60vw;
+    display: grid;
+    grid-template-columns: 75% 20%;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #d3d3d3;
+    border-radius:10px;
+    margin: 0;
+}
+
+.wrapperListproduct > div,
+.wrapperListproduct > a {
+    margin: 0;
+}
+
+.wrapperListproduct:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.listView {
+    display: flex;
+    width: 100%;
+}
+
+.buttonBlock {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.buttonList {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapperProduct .imgProduct {
+    width: 250px;
+    height: 250px;
+    border: 0;
+}
+
+.wrapperListproduct .imgBlock {
+    width: 200px;
+    margin-right: 25px;
+}
+
+.wrapperListproduct .imgProduct {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.descriptinBlock {
+    display: flex;
+    flex-direction: column;
+    color: gray;
+}
+
+
+.description {
+    border-bottom: 1px solid gold;
+    width: 43%;
+}
+
+.descriptList {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    flex-direction: column;
+    color: gray;
+    justify-content: center;
+}
+
+.description {
+    width: 100%;
+    padding: 30px;
+  }
+  .descriptinBlock {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
+    color: gray;
+  }
+
+.wrapperProduct:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.name {
+    font-size: 24px;
+    margin-bottom: 3px;
+    font-weight: bold;
+  }
+ 
+  .descriptinBlock > div {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+  .line {
+    width: 100%;
+    background: #f2651c;
+    height: 2px;
+    margin-bottom: 20px;
+  }
+  .descriptinBlock .desc {
+    margin-left: 10px;
+    color: #000000;
+    font-size: 22px;
+  }
+  .price {
+    font-size: 24px;
+    margin: 0;
+    font-weight: bold;
+    color: #000000;
+  }

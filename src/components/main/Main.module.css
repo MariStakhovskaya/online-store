@@ -1,0 +1,161 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat-Regular.ttf);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 80vw;
+  font-family: Montserrat;
+}
+.search__and__sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 78%;
+  margin-right: 0;
+}
+.search__and__sort select {
+  margin: 0;
+  font-size: 16px;
+  width: 20%;
+  padding: 10px 5px;
+  border: 1px #d3d3d3 solid;
+  border-radius: 10px;
+  color: #808080;
+}
+
+.grid {
+  display: flex;
+  gap: 30px;
+  margin: 0;
+}
+.grid > div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.category,
+.brand,
+.price,
+.ctock {
+  width: 100%;
+  margin-bottom: 15px;
+  border: 1px #d3d3d3 solid;
+  border-radius: 10px;
+}
+.double__range {
+  position: relative;
+  padding: 10px 15px;
+}
+.range {
+  height: 3px;
+  background: #f39262;
+}
+input[type="range"] {
+  position: absolute;
+  width: calc(100% - 30px);
+  top: 71.5%;
+  left: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  pointer-events: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: #f1ac8a;
+  border: 1px solid #f2651c;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 12px;
+  height: 12px;
+  pointer-events: auto;
+}
+input[type=range]::-moz-range-thumb {
+  background: #f1ac8a;
+  border: 1px solid #f2651c;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.values {
+  display: flex;
+  justify-content: space-between;
+}
+.values > div {
+  width: 50px;
+  padding: 2px 5px;
+  margin: 0 0 15px 0;
+  background: #f1ac8a;
+}
+.products__and__filters {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0 0 0;
+}
+.products__and__filters > div {
+  margin: 0;
+}
+.filters {
+  width: 20%;
+}
+.category > p,
+.brand > p,
+.price > p,
+.ctock > p {
+  text-align: left;
+  background: #ffffff;
+  border-bottom: 1px #d3d3d3 solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 5px;
+  padding-left: 15px;
+}
+.products {
+  width: 78%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2.73%;
+  row-gap: 30px;
+  padding-left: 15px;
+}
+.listView {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 5px;
+  justify-content: flex-start;
+  
+}
+.product {
+  margin: 0;
+  background: #ffffff;
+  padding: 10px;
+  width: 250px;
+  height: 400px;
+  margin-bottom: 20px;
+}
+.allFind {
+  margin-left: 15px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.nothingText {
+  padding-top: 50px;
+  font-size: 26px;
+}

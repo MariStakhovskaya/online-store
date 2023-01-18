@@ -1,0 +1,61 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+}
+@font-face {
+  font-family: Nexa;
+  src: url(../../fonts/nexa-script-thin.ttf);
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(../../fonts/Montserrat-Regular.ttf);
+}
+.container {
+  width: 80vw;
+}
+.header {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Montserrat;
+}
+.header > div {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  font-family: Nexa;
+  font-size: 26px;
+  cursor: pointer;
+}
+.logo > img {
+  width: 70px;
+  height: 70px;
+  margin: 0;
+}
+.logo span {
+  color: #f2651c;
+}
+.basket img {
+  width: 45px;
+  height: 45px;
+}
+.basket > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+}
+.quantity {
+  position: absolute;
+  top: 10px;
+  background: #00000080;
+  color: #ffffff;
+  padding: 0 5px;
+  border-radius: 15px;
+}
+.counter {
+  margin-left: 10px;
+}

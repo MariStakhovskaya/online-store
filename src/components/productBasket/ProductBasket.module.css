@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.counter {
+  margin: 0;
+  width: 45px;
+  height: 40px;
+  color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 50%;
+  background-color: #f2651c;
+}
+.wrapperProduct {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d3d3d3;
+  border-radius:10px;
+  margin: 0;
+  background: #ffffff;
+  padding: 20px 30px;
+  margin: 0  0 30px 40px;
+  width: 100%;
+}
+.imgProduct {
+  width: 250px;
+  height: 250px;
+  border-radius:10px;
+  margin: 0;
+}
+.name {
+  font-size: 24px;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+.description {
+  width: 100%;
+  padding: 30px;
+}
+.descriptinBlock {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  color: gray;
+}
+.descriptinBlock > div {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.line {
+  width: 100%;
+  background: #f2651c;
+  height: 2px;
+  margin-bottom: 20px;
+}
+.descriptinBlock .desc {
+  color: #000000;
+  font-size: 22px;
+}
+.price {
+  font-size: 24px;
+  margin: 20px 0 0 auto;
+  font-weight: bold;
+  color: #000000;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 24px;
+  font-weight: bold;
+}
+.btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px #f2651c solid;
+  background: #f1ac8a;
+  cursor: pointer;
+}
